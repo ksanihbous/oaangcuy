@@ -191,21 +191,22 @@ def handle_message(event):
 		#just add more template :3 (Max 10)
 		sendFlex(alt='THIS IS CAROUSEL MESSAGE', content=message)
 
-    if text.lower()('sifatnama '):
-        try:
-            sep = text.split(" ")
-            search = text.replace(sep[0] + " ","")
-            r = requests.get("http://syadnysyz2.herokuapp.com/api/ramalan-nama?nama=/{}".format(search))
-            data = r.json()
-            a="╭─「 SifatNama {} 」".format(search)
-            a+="\n├ Romantis : "+str(data["result"]["romantis"])
-            a+="\n├ Mesum : "+str(data["result"]["mesum"])
-            a+="\n├ Miris : "+str(data["result"]["miris"])
-            a+="\n├ Tulus : "+str(data["result"]["tulus"])
-            a+="\n├ Loyal : "+str(data["result"]["loyal"])
-            sendMessage(a+"\n╰─「 Asa 」")
-        except Exception as e:
-            sendMessage("Gunakan Sifatnamav2 <nama>")
+    elif text == "quotes twitch":
+        r=requests.get("https://api.haipbis.xyz/randomtwitchquotes")
+        data=r.text
+        data=json.loads(data)
+        qts1 = "{}".format(data["quotes"])
+        strm = "{}".format(data["streamer"])
+        r2=requests.get("http://ariapi.herokuapp.com/api/trans?key=beta&to=in&text={}".format(qts1))
+        data=r2.text
+        data2=json.loads(data)
+        qts2 = "{}".format(data2["result"]["translated"])
+        ret_ = "╭─「 Quotes Twitch 」"
+        ret_ += "\n├ Quotes EN : {}".format(qts1)
+        ret_ += "\n├ Quotes ID : {}".format(qts2)
+        ret_ += "\n├ Streamer : {}".format(strm)
+        ret_ += "\n╰─「 This Asa 」"
+        sendMessage(str(ret_))
 
 #===============================================================================[ END ]
 import os
