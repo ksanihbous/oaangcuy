@@ -187,7 +187,7 @@ def handle_message(event):
 		status = line_bot_api.get_profile(sender).status_message
 		#userid = line_bot_api.get_profile(sender).userId
 		#pict = line_bot_api.get_profile(sender).pictureUrl
-		#uye = line_bot_api.get_profile(sender)
+		uye = line_bot_api.get_profile(sender)
 		#print(uye)
 		ret_ = "╭─「 This You 」"
 		ret_ += "\n├ DisplayName : {}".format(profile)
