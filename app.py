@@ -165,7 +165,7 @@ def handle_message(event):
 		"""
 		sendMessage('Wayaaeee~')
 
-	if text == 'huys':
+	if text == 'quotes':
 		r = requests.get("https://api.haipbis.xyz/randomtwitchquotes")
 		data = r.text
 		data = json.loads(data)
@@ -179,6 +179,19 @@ def handle_message(event):
 		ret_ += "\n├ Quotes EN : {}".format(qts1)
 		ret_ += "\n├ Quotes ID : {}".format(qts2)
 		ret_ += "\n├ Streamer : {}".format(strm)
+		ret_ += "\n╰─「 Test 」"
+		sendMessage(ret_)
+
+	if text.lower().startswith('zodiaks '):
+		sep = text.split(" ")
+		q = text.replace(sep[0] + " ","")
+		r = requests.get("https://api.fckveza.com/zodiak?query={}&apikey=AsaTZZK".format(str(q)))
+		data=r.text
+		data=json.loads(data)
+		hasil = "╭─「 Quotes Twitch 」"
+		hasil += "\n├ Zodiak : "+str(data["result"][0]["zodiak"])
+		hasil += "\n├ Ramalan Asmara : " +str(data["result"][0]["ramalan"]["asmara"])
+		hasil += "\n├ Ramalan Kehidupan : " +str(data["result"][0]["ramalan"]["hidup"])
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
 
