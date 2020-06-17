@@ -211,38 +211,167 @@ def handle_message(event):
 		following = data["result"]["following"]
 		post = data["result"]["post"]
 		private = data["result"]["private"]
+		pict = data["result"]["profile_img"]
 		message = [{
   "type": "bubble",
+  "size": "kilo",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": "{}".format(pict),
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "1:1",
+            "gravity": "center",
+            "flex": 1
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Profile",
+                "size": "xs",
+                "color": "#ffffff",
+                "align": "center",
+                "gravity": "center"
+              }
+            ],
+            "backgroundColor": "#EC3D44",
+            "paddingAll": "2px",
+            "paddingStart": "4px",
+            "paddingEnd": "4px",
+            "flex": 0,
+            "position": "absolute",
+            "offsetStart": "18px",
+            "offsetTop": "18px",
+            "cornerRadius": "100px",
+            "width": "48px",
+            "height": "25px"
+          }
+        ]
+      }
+    ],
+    "paddingAll": "0px"
+  },
   "body": {
     "type": "box",
     "layout": "vertical",
     "contents": [
       {
-        "type": "text",
-        "text": "User : {}".format(user),
-        "color": "#000000",
-        "size": "md",
-        "wrap": True
-      },
-      {
-        "type": "text",
-        "text": "Bio : {}".format(bio),
-        "size": "md",
-        "color": "#000000",
-        "wrap": True
-      },
-      {
-        "type": "text",
-        "text": "Bio Link : {}".format(bio2),
-        "size": "md",
-        "wrap": True
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "contents": [],
+                "size": "xl",
+                "wrap": True,
+                "text": "{}".format(name),
+                "color": "#ffffff",
+                "weight": "bold"
+              }
+            ],
+            "spacing": "sm"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "User : {}".format(user),
+                    "margin": "lg",
+                    "size": "md",
+                    "color": "#ffffffde",
+                    "wrap": True
+                  },
+                  {
+                    "type": "text",
+                    "text": "Bio : {}".format(bio),
+                    "size": "md",
+                    "color": "#ffffffde",
+                    "margin": "md",
+                    "wrap": True
+                  },
+                  {
+                    "type": "text",
+                    "text": "Bio Link : {}".format(bio2),
+                    "color": "#ffffffde",
+                    "size": "md",
+                    "margin": "md",
+                    "wrap": True,
+                    "action": {
+                      "type": "uri",
+                      "label": "Bio",
+                      "uri": "{}".format(bio2)
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": "Followrs : {}".format(followers),
+                    "size": "md",
+                    "margin": "md",
+                    "color": "#ffffffde",
+                    "wrap": True
+                  },
+                  {
+                    "type": "text",
+                    "text": "Following : {}".format(following),
+                    "size": "md",
+                    "margin": "md",
+                    "color": "#ffffffde",
+                    "wrap": True
+                  },
+                  {
+                    "type": "text",
+                    "text": "Post : {}".format(post),
+                    "size": "md",
+                    "color": "#ffffffde",
+                    "margin": "md",
+                    "wrap": True
+                  },
+                  {
+                    "type": "text",
+                    "text": "Private : {}".format(private),
+                    "size": "md",
+                    "margin": "md",
+                    "wrap": True
+                  }
+                ],
+                "borderColor": "#ffffff",
+                "borderWidth": "4px"
+              }
+            ],
+            "paddingAll": "13px",
+            "backgroundColor": "#ffffff1A",
+            "cornerRadius": "2px",
+            "margin": "xl"
+          }
+        ]
       }
-    ]
-  },
-  "styles": {
-    "footer": {
-      "separator": True
-    }
+    ],
+    "paddingAll": "20px",
+    "backgroundColor": "#464F69",
+    "borderColor": "#000000",
+    "borderWidth": "5px",
+    "cornerRadius": "sm"
   }
 }]
 		sendFlex(alt='THIS IS FLEX MESSAGE', contents=message)
