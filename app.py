@@ -178,18 +178,8 @@ def handle_message(event):
 		line_bot_api.broadcast([sendMessage('THIS IS A BROADCAST MESSAGE'),])
 
 	if text == 'me':
-		if isinstance(event.source, SourceUser):
-			profile = line_bot_api.get_profile(event.source.user_id)
-			line_bot_api.reply_message(
-				event.reply_token, [
-					TextSendMessage(text='Display name: ' + profile.display_name),
-					TextSendMessage(text='Status message: ' + str(profile.status_message))
-				]
-			)
-		else:
-			line_bot_api.reply_message(
-				event.reply_token,
-				TextSendMessage(text="Bot can't use profile API without user ID"))
+		profile = line_bot_api.get_profile(sender).display_name
+		sendMessage(profile)
 
 	if text == 'runtime':
 		timeNow = time.time()
