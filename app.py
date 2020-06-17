@@ -179,7 +179,12 @@ def handle_message(event):
 
 	if text == 'me':
 		profile = line_bot_api.get_profile(sender).display_name
-		sendMessage(profile)
+		status = line_bot_api.get_profile(sender).status_message
+		ret_ = "╭─「 This You 」"
+		ret_ += "\n├ DisplayName : {}".format(profile)
+		ret_ += "\n├ Status : {}".format(status)
+		ret_ += "\n╰─「 Test 」"
+		sendMessage(ret_)
 
 	if text == 'runtime':
 		timeNow = time.time()
