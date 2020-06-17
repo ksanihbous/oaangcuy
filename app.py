@@ -192,11 +192,11 @@ def handle_message(event):
 		ret_ = "╭─「 This You 」"
 		ret_ += "\n├ DisplayName : {}".format(profile)
 		ret_ += "\n├ Status : {}".format(status)
-		#ret_ += "\n├ UserID : {}".format(uye.userId)
+		#ret_ += "\n├ UserID : {}".format(uye["userId"])
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
 		sendMessage(uye)
-		userid = line_bot_api.get_profile(sender).user_id
+		userid = uye["userId"]
 		sendMessage(userid)
 		#sendImage(pict)
 
