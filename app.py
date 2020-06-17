@@ -12,7 +12,9 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-import requests, json, pafy
+import requests, json, pafy , pytz , humanize
+from humanfriendly import format_timespan, format_size, format_number, format_length
+from datetime import datetime, timedelta
 import errno
 import os
 from flex import flexTemplate
@@ -39,6 +41,7 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('HMmDaqVkgYZEsDLe+2+wtabB9WculAkpCWv7Ly9tHg1+MXZX5vE7snMgPDusPJJnYV7ogj6/NVTQDLEmLpIndfGJ/jCb+TlLVjM43DBoIlpd+AwM261iNAtNIQJMRgRHZoei/aKBDhywT8/G4tG8QAdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('01171fa476c3e523142a1338f5042b5a')
 flex = flexTemplate()
+botStart = time.time()
 #===================[ LINKE STARTO ]=====================	
 @app.route('/')
 def helo():
@@ -164,6 +167,12 @@ def handle_message(event):
 		this is example if u just want to send a text message
 		"""
 		sendMessage('Wayaaeee~')
+
+	if text == 'runtime':
+		timeNow = time.time()
+		runtime = timeNow - botStart
+		runtime = format_timespan(runtime)
+		sendMessage("「 Runtime 」\n"+str(runtime))
 
 	if text == 'quotes twitch':
 		r = requests.get("https://api.haipbis.xyz/randomtwitchquotes")
@@ -351,6 +360,7 @@ def handle_message(event):
                     "type": "text",
                     "text": "Private : {}".format(private),
                     "size": "md",
+                    "color": "#ffffffde",
                     "margin": "md",
                     "wrap": True
                   }
