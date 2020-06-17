@@ -174,6 +174,9 @@ def handle_message(event):
 	if text == 'byes':
 		line_bot_api.leave_group(event.source.group_id)
 
+	if text == 'bc':
+		line_bot_api.broadcast([TextSendMessage(text='THIS IS A BROADCAST MESSAGE'),])
+
 	if text == 'runtime':
 		timeNow = time.time()
 		runtime = timeNow - botStart
