@@ -7,3 +7,6 @@ googletrans
 pafy
 youtube-dl
 pytube
+humanfriendly
+humanize
+pytz
