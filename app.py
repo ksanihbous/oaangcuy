@@ -181,7 +181,8 @@ def handle_message(event):
 		start = time.time()
 		sendMessage('Testing speed~')
 		elapsed_time = time.time() - start
-		sendMessage("{} seconds".format(round(elapsed_time,7)))
+		took = time.time() - start
+		sendMessage("「 Speed 」\n - Took : %.5f ms\n - Taken: %.15f" % (took,elapsed_time))
 
 	if text == 'quotes twitch':
 		r = requests.get("https://api.haipbis.xyz/randomtwitchquotes")
