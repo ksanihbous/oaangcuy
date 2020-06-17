@@ -182,16 +182,18 @@ def handle_message(event):
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
 
-	if text.lower().startswith('zodiaks '):
+	if text.lower().startswith('zodiac '):
 		sep = text.split(" ")
 		q = text.replace(sep[0] + " ","")
 		r = requests.get("https://api.fckveza.com/zodiak?query={}&apikey=AsaTZZK".format(str(q)))
 		data=r.text
 		data=json.loads(data)
-		hasil = "╭─「 Quotes Twitch 」"
+		hasil = "╭─「 Zodiak 」"
 		hasil += "\n├ Zodiak : "+str(data["result"][0]["zodiak"])
 		hasil += "\n├ Ramalan Asmara : " +str(data["result"][0]["ramalan"]["asmara"])
 		hasil += "\n├ Ramalan Kehidupan : " +str(data["result"][0]["ramalan"]["hidup"])
+                hasil += "\n├ Ramalan Keuangan : " +str(data["result"][0]["ramalan"]["keuangan"])
+                hasil += "\n├ Nomor Keberuntungan : " +str(data["result"][0]["ramalan"]["nomorKeberuntungan"])
 		hasil += "\n╰─「 Test 」"
 		sendMessage(hasil)
 
