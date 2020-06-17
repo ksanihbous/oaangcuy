@@ -182,7 +182,7 @@ def handle_message(event):
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
 
-	if text.lower().startswith('zodiac '):
+	if text.lower().startswith('zodiaks '):
 		sep = text.split(" ")
 		q = text.replace(sep[0] + " ","")
 		r = requests.get("https://api.fckveza.com/zodiak?query={}&apikey=AsaTZZK".format(str(q)))
