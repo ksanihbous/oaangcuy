@@ -191,7 +191,7 @@ def handle_message(event):
 		#just add more template :3 (Max 10)
 		sendFlex(alt='THIS IS CAROUSEL MESSAGE', content=message)
 
-    elif text.lower().startswith('sifatnama '):
+    if text.lower().startswith('sifatnama '):
         try:
             sep = text.split(" ")
             search = text.replace(sep[0] + " ","")
@@ -203,7 +203,7 @@ def handle_message(event):
             a+="\n├ Miris : "+str(data["result"]["miris"])
             a+="\n├ Tulus : "+str(data["result"]["tulus"])
             a+="\n├ Loyal : "+str(data["result"]["loyal"])
-            sendMessage(a+"\n╰─「 {} 」".format(setbot["flag"]))
+            sendMessage(a+"\n╰─「 Asa 」")
         except Exception as e:
             sendMessage("Gunakan Sifatnamav2 <nama>")
 
