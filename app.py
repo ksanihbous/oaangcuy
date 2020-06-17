@@ -180,7 +180,7 @@ def handle_message(event):
 		line_bot_api.leave_group(event.source.group_id)
 
 	if text == 'bc':
-		line_bot_api.broadcast([sendMessage('THIS IS A BROADCAST MESSAGE'),])
+		line_bot_api.broadcast([TextSendMessage(text='THIS IS A BROADCAST MESSAGE'),])
 
 	if text == 'me':
 		profile = line_bot_api.get_profile(sender).display_name
