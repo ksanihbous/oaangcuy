@@ -211,7 +211,7 @@ def handle_message(event):
 		following = data["result"]["following"]
 		post = data["result"]["post"]
 		private = data["result"]["private"]
-		message = {
+		message = [{
   "type": "bubble",
   "body": {
     "type": "box",
@@ -244,7 +244,7 @@ def handle_message(event):
       "separator": True
     }
   }
-}
+}]
 		sendFlex(alt='THIS IS FLEX MESSAGE', contents=message)
 
 	if text == 'heyy':
