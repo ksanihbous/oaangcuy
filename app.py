@@ -182,20 +182,60 @@ def handle_message(event):
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
 
-	if text.lower().startswith('zodiaks '):
+	if text.lower().startswith('ig '):
+		sep = text.split(" ")
+		q = text.replace(sep[0] + " ","")
+		r = requests.get("https://asaxyz.herokuapp.com/instagram?username={}".format(str(q)))
+		data=r.text
+		data=json.loads(data)
+		user = data["result"]["username"]
+		name = data["result"]["fullname"]
+		bio = data["result"]["bio"]
+		bio2 = data["result"]["bio_link"]
+		followers = data["result"]["followers"]
+		following = data["result"]["following"]
+		post = data["result"]["post"]
+		private = data["result"]["private"]
+		message = {
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "User : {}".format(user),
+        "color": "#000000",
+        "size": "md",
+        "wrap": True
+      },
+      {
+        "type": "text",
+        "text": "Bio : {}".format(bio),
+        "size": "md",
+        "color": "#000000",
+        "wrap": True
+      },
+      {
+        "type": "text",
+        "text": "Bio Link : {}".format(bio2),
+        "size": "md",
+        "wrap": True
+      }
+    ]
+  },
+  "styles": {
+    "footer": {
+      "separator": True
+    }
+  }
+}
+		sendFlex(alt='THIS IS FLEX MESSAGE', contents=message)
+
+	if text.lower().startswith('instagram '):
 		sep = text.split(" ")
 		q = text.replace(sep[0] + " ","")
 		r = requests.get("https://api.fckveza.com/zodiak?query={}&apikey=AsaTZZK".format(str(q)))
-		data=r.text
-		data=json.loads(data)
-		hasil = "╭─「 Zodiak 」"
-		hasil += "\n├ Zodiak : "+str(data["result"][0]["zodiak"])
-		hasil += "\n├ Ramalan Asmara : " +str(data["result"][0]["ramalan"]["asmara"])
-		hasil += "\n├ Ramalan Kehidupan : " +str(data["result"][0]["ramalan"]["hidup"])
-		hasil += "\n├ Ramalan Keuangan : " +str(data["result"][0]["ramalan"]["keuangan"])
-		hasil += "\n├ Nomor Keberuntungan : " +str(data["result"][0]["ramalan"]["nomorKeberuntungan"])
-		hasil += "\n╰─「 Test 」"
-		sendMessage(hasil)
 
 	if text == 'heyy':
 		"""
