@@ -31,7 +31,7 @@ class flexTemplate:
     "contents": [
       {
         "type": "text",
-        "text": "ARSYBAI GANTHENG",
+        "text": "This Asa",
         "weight": "bold",
         "size": "xl"
       },
@@ -140,8 +140,8 @@ class flexTemplate:
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "ARSY",
-          "uri": "line://ti/p/~arsy22bai"
+          "label": "Yon Official",
+          "uri": "line://nv/profilePopup/mid=u7847d102fff81a6b1bfc0452db5130df"
         }
       },
       {
@@ -150,8 +150,8 @@ class flexTemplate:
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "WEBSITE",
-          "uri": "https://arsybai.xyz"
+          "label": "Yon",
+          "uri": "line://nv/profilePopup/mid=u7847d102fff81a6b1bfc0452db5130df"
         }
       },
       {
