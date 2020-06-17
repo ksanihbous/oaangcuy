@@ -42,6 +42,8 @@ line_bot_api = LineBotApi('HMmDaqVkgYZEsDLe+2+wtabB9WculAkpCWv7Ly9tHg1+MXZX5vE7s
 handler = WebhookHandler('01171fa476c3e523142a1338f5042b5a')
 flex = flexTemplate()
 botStart = time.time()
+tz = pytz.timezone("Asia/Jakarta")
+timeNow = datetime.now(tz=tz)
 #===================[ LINKE STARTO ]=====================	
 @app.route('/')
 def helo():
