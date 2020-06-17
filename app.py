@@ -192,8 +192,8 @@ def handle_message(event):
 		hasil += "\n├ Zodiak : "+str(data["result"][0]["zodiak"])
 		hasil += "\n├ Ramalan Asmara : " +str(data["result"][0]["ramalan"]["asmara"])
 		hasil += "\n├ Ramalan Kehidupan : " +str(data["result"][0]["ramalan"]["hidup"])
-                hasil += "\n├ Ramalan Keuangan : " +str(data["result"][0]["ramalan"]["keuangan"])
-                hasil += "\n├ Nomor Keberuntungan : " +str(data["result"][0]["ramalan"]["nomorKeberuntungan"])
+		hasil += "\n├ Ramalan Keuangan : " +str(data["result"][0]["ramalan"]["keuangan"])
+		hasil += "\n├ Nomor Keberuntungan : " +str(data["result"][0]["ramalan"]["nomorKeberuntungan"])
 		hasil += "\n╰─「 Test 」"
 		sendMessage(hasil)
 
