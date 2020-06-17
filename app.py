@@ -165,7 +165,7 @@ def handle_message(event):
 		"""
 		sendMessage('Wayaaeee~')
 
-	if text == 'quotes':
+	if text == 'quotes twitch':
 		r = requests.get("https://api.haipbis.xyz/randomtwitchquotes")
 		data = r.text
 		data = json.loads(data)
@@ -192,8 +192,8 @@ def handle_message(event):
 		hasil += "\n├ Zodiak : "+str(data["result"][0]["zodiak"])
 		hasil += "\n├ Ramalan Asmara : " +str(data["result"][0]["ramalan"]["asmara"])
 		hasil += "\n├ Ramalan Kehidupan : " +str(data["result"][0]["ramalan"]["hidup"])
-		ret_ += "\n╰─「 Test 」"
-		sendMessage(ret_)
+		hasil += "\n╰─「 Test 」"
+		sendMessage(hasil)
 
 	if text == 'heyy':
 		"""
