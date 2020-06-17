@@ -191,23 +191,6 @@ def handle_message(event):
 		#just add more template :3 (Max 10)
 		sendFlex(alt='THIS IS CAROUSEL MESSAGE', content=message)
 
-    if text == 'quotes':
-        r=requests.get("https://api.haipbis.xyz/randomtwitchquotes")
-        data=r.text
-        data=json.loads(data)
-        qts1 = "{}".format(data["quotes"])
-        strm = "{}".format(data["streamer"])
-        r2=requests.get("http://ariapi.herokuapp.com/api/trans?key=beta&to=in&text={}".format(qts1))
-        data=r2.text
-        data2=json.loads(data)
-        qts2 = "{}".format(data2["result"]["translated"])
-        ret_ = "╭─「 Quotes Twitch 」"
-        ret_ += "\n├ Quotes EN : {}".format(qts1)
-        ret_ += "\n├ Quotes ID : {}".format(qts2)
-        ret_ += "\n├ Streamer : {}".format(strm)
-        ret_ += "\n╰─「 This Asa 」"
-        sendMessage(str(ret_))
-
 #===============================================================================[ END ]
 import os
 if __name__ == "__main__":
