@@ -12,9 +12,10 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-import requests, json, pafy , pytz , humanize
+import requests, json, pafy , pytz , humanize , time
 from humanfriendly import format_timespan, format_size, format_number, format_length
 from datetime import datetime, timedelta
+from time import sleep
 import errno
 import os
 from flex import flexTemplate
