@@ -179,25 +179,19 @@ def handle_message(event):
 	if text == 'byes':
 		line_bot_api.leave_group(event.source.group_id)
 
-	if text == 'bc':
-		line_bot_api.broadcast([TextSendMessage(text='THIS IS A BROADCAST MESSAGE'),])
+	if text.lower().startswith('bc '):
+		sep = text.split(" ")
+		q = text.replace(sep[0] + " ","")
+		line_bot_api.broadcast([TextSendMessage(text='{}'.format(q)),])
 
 	if text == 'me':
 		profile = line_bot_api.get_profile(sender).display_name
 		status = line_bot_api.get_profile(sender).status_message
-		#userid = line_bot_api.get_profile(sender).userId
-		#pict = line_bot_api.get_profile(sender).pictureUrl
-		uye = line_bot_api.get_profile(sender)
-		#print(uye)
 		ret_ = "╭─「 This You 」"
 		ret_ += "\n├ DisplayName : {}".format(profile)
 		ret_ += "\n├ Status : {}".format(status)
-		#ret_ += "\n├ UserID : {}".format(uye["userId"])
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
-		userid = uye["userId"]
-		sendMessage(userid)
-		#sendImage(pict)
 
 	if text == 'restart':
 		sendMessage("Success reboot...")
@@ -208,13 +202,6 @@ def handle_message(event):
 		runtime = timeNow - botStart
 		runtime = format_timespan(runtime)
 		sendMessage("「 Runtime 」\n"+str(runtime))
-
-	if text == 'speed' or text == 'sp':
-		start = time.time()
-		sendMessage('Testing speed~')
-		elapsed_time = time.time() - start
-		took = time.time() - start
-		sendMessage("「 Speed 」\n - Took : %.5f ms\n - Taken: %.15f" % (took,elapsed_time))
 
 	if text == 'quotes twitch':
 		r = requests.get("https://api.haipbis.xyz/randomtwitchquotes")
