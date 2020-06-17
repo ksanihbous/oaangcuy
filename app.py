@@ -191,7 +191,7 @@ def handle_message(event):
 		#just add more template :3 (Max 10)
 		sendFlex(alt='THIS IS CAROUSEL MESSAGE', content=message)
 
-    if text.lower().startswith('sifatnama '):
+    if text.lower()('sifatnama '):
         try:
             sep = text.split(" ")
             search = text.replace(sep[0] + " ","")
