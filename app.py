@@ -171,6 +171,9 @@ def handle_message(event):
 		"""
 		sendMessage('Wayaaeee~')
 
+	if text == 'byes':
+		line_bot_api.leave_group(event.source.group_id)
+
 	if text == 'runtime':
 		timeNow = time.time()
 		runtime = timeNow - botStart
