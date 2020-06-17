@@ -180,6 +180,8 @@ def handle_message(event):
 	if text == 'me':
 		profile = line_bot_api.get_profile(sender).display_name
 		status = line_bot_api.get_profile(sender).status_message
+		uye = line_bot_api.get_profile(sender)
+		print(uye)
 		ret_ = "╭─「 This You 」"
 		ret_ += "\n├ DisplayName : {}".format(profile)
 		ret_ += "\n├ Status : {}".format(status)
