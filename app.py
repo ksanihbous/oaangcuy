@@ -191,7 +191,7 @@ def handle_message(event):
 		#just add more template :3 (Max 10)
 		sendFlex(alt='THIS IS CAROUSEL MESSAGE', content=message)
 
-    elif text == "quotes twitch":
+    if text == 'quotes':
         r=requests.get("https://api.haipbis.xyz/randomtwitchquotes")
         data=r.text
         data=json.loads(data)
