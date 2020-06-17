@@ -205,9 +205,11 @@ def handle_message(event):
 	if text == 'me':
 		name = line_bot_api.get_profile(sender).display_name
 		status = line_bot_api.get_profile(sender).status_message
+		anu = sender
 		ret_ = "╭─「 This You 」"
 		ret_ += "\n├ DisplayName : {}".format(name)
 		ret_ += "\n├ Status : {}".format(status)
+		ret_ += "\n├ Mid : {}".format(anu)
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
 
