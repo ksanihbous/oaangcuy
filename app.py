@@ -159,33 +159,18 @@ def handle_message(event):
 		items = [quickItem('Hello','Hello')]
 		sendMessageWithQuickReply('hi',items)
 	
-	if text == 'hi':
+	if text == 'huy':
 		"""
 		this is example if u just want to send a text message
 		"""
-        r = requests.get('https://api.haipbis.xyz/randomtwitchquotes')
-        data = r.text
-        data = json.loads(data)
-        qts1 = '{}'.format(data['quotes'])
-        strm = '{}'.format(data['streamer'])
-        r2 = requests.get('http://ariapi.herokuapp.com/api/trans?key=beta&to=in&text={}'.format(qts1))
-        data= r2.text
-        data2 = json.loads(data)
-        qts2 = '{}'.format(data2['result']['translated'])
-        ret_ = '╭─「 Quotes Twitch 」'
-        ret_ += '\n├ Quotes EN : {}'.format(qts1)
-        ret_ += '\n├ Quotes ID : {}'.format(qts2)
-        ret_ += '\n├ Streamer : {}'.format(strm)
-        ret_ += '\n╰─「 This Asa 」'
-        sendMessage(str(ret_))
-		sendMessage('Hello Kampank!')
+		sendMessage('Wayaaeee~')
 
-	if text == 'hi2':
+	if text == 'heyy':
 		"""
 		this is example if you want to send more than one message
 		"""
-		message1 = TextSendMessage(text='Halo kampank')
-		message2 = TextSendMessage(text='how are you?')
+		message1 = TextSendMessage(text='Halo babang')
+		message2 = TextSendMessage(text='Ngape lo?')
 		#and more (Max 5)
 		sendMessageV2([message1,message2])
 
