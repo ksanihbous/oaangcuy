@@ -184,6 +184,9 @@ def handle_message(event):
 		q = text.replace(sep[0] + " ","")
 		line_bot_api.broadcast([TextSendMessage(text='{}'.format(q)),])
 
+	elif text == 'pict':
+		sendImage("https://i.postimg.cc/nzRRpFMd/LOGO-z-Asa-BOT.jpg")
+
 	elif text == 'carousels':
 		carousel_template = CarouselTemplate(columns=[
 			CarouselColumn(text='hoge1', title='fuga1', actions=[
@@ -200,10 +203,10 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token, template_message)
 
 	if text == 'me':
-		profile = line_bot_api.get_profile(sender).display_name
+		name = line_bot_api.get_profile(sender).display_name
 		status = line_bot_api.get_profile(sender).status_message
 		ret_ = "╭─「 This You 」"
-		ret_ += "\n├ DisplayName : {}".format(profile)
+		ret_ += "\n├ DisplayName : {}".format(name)
 		ret_ += "\n├ Status : {}".format(status)
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
