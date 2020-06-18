@@ -263,6 +263,68 @@ def handle_message(event):
 		uye = sender
 		ugh["codePin"] = uye
 
+	elif text == 'success login':
+		message = [{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.postimg.cc/ZR5fgS4S/Logo-OA-Yon.jpg",
+                "aspectMode": "cover",
+                "size": "full"
+              }
+            ],
+            "cornerRadius": "100px",
+            "width": "72px",
+            "height": "72px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "spacer",
+                "size": "xxl"
+              },
+              {
+                "type": "text",
+                "text": "Success Login",
+                "weight": "bold",
+                "style": "italic",
+                "decoration": "underline",
+                "size": "lg",
+                "action": {
+                  "type": "message",
+                  "label": "action",
+                  "text": "Success Login Selfbot"
+                }
+              }
+            ]
+          }
+        ],
+        "spacing": "xl",
+        "paddingAll": "20px",
+        "borderColor": "#000000",
+        "borderWidth": "4px",
+        "cornerRadius": "xl"
+      }
+    ],
+    "paddingAll": "0px"
+  }
+}]
+		sendFlex(alt='Success Login', contents=message)
+
 	if text.lower().startswith('log '):
 		sep = text.split(" ")
 		q = text.replace(sep[0] + " ","")
@@ -389,6 +451,70 @@ def handle_message(event):
 		template_message = TemplateSendMessage(
 			alt_text='Carousel alt text', template=carousel_template)
 		line_bot_api.reply_message(event.reply_token, template_message)
+
+	elif text == 'uye':
+		test = [{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.postimg.cc/ZR5fgS4S/Logo-OA-Yon.jpg",
+                "aspectMode": "cover",
+                "size": "full"
+              }
+            ],
+            "cornerRadius": "100px",
+            "width": "72px",
+            "height": "72px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "spacer",
+                "size": "xxl"
+              },
+              {
+                "type": "text",
+                "text": "Sukses Login",
+                "weight": "bold",
+                "style": "italic",
+                "decoration": "underline",
+                "size": "lg",
+                "action": {
+                  "type": "message",
+                  "label": "action",
+                  "text": "Sukses Login Selfbot"
+                }
+              }
+            ]
+          }
+        ],
+        "spacing": "xl",
+        "paddingAll": "20px",
+        "borderColor": "#000000",
+        "borderWidth": "4px",
+        "cornerRadius": "xl"
+      }
+    ],
+    "paddingAll": "0px"
+  }
+}]
+		testing = TemplateSendMessage(
+			alt_text='Carousel alt text', template=test)
+		line_bot_api.reply_message(event.reply_token, testing)
 
 	elif text == 'carousel img':
 		image_carousel_template = ImageCarouselTemplate(columns=[
