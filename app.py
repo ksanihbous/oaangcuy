@@ -516,7 +516,7 @@ def handle_message(event):
 		line.reply_message(event.reply_token,message)
 
 	elif text == 'uyee':
-		sendMessage("{}".format(event.reply_token,message))
+		sendMessage("{}".format(event.reply_token))
 
 	elif text == 'carousel img':
 		image_carousel_template = ImageCarouselTemplate(columns=[
