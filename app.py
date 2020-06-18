@@ -317,7 +317,7 @@ def handle_message(event):
 }]
 		#sendFlex(alt='Click For Login', contents=message)
 		sendMessage("Click Link QR Before 2 Minutes:\n{}".format(qr))
-		time.sleep(3)
+		#time.sleep(3)
 		#name = line_bot_api.get_profile(sender).display_name
 		#sendMessage("Click For Login ")
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key).text)
@@ -325,7 +325,7 @@ def handle_message(event):
 			raise Exception("Timeout!!!")
 		pin = ""+result["result"]["pin_code"]
 		print("Pincode : "+pin)
-		time.sleep(3)
+		#time.sleep(3)
 		sendMessage('Pincode : '+str(pin))
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key+"&sysname=SB Premium").text)
 		if result["status"] != 200:
