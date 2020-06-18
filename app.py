@@ -316,17 +316,19 @@ def handle_message(event):
   }
 }]
 		sendFlex(alt='Click For Login', contents=message)
-		#time.sleep(3)
-		#name = line_bot_api.get_profile(sender).display_name
+		time.sleep(3)
+		name = line_bot_api.get_profile(sender).display_name
 		#uye = "Click For Login {}".format(name)
-		#sendMessage(uye)
+		line_bot_api.reply_message(event.reply_token,
+			TextSendMessage(text='Click For Login {}'.format(name)))
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key).text)
 		if result["status"] != 200:
 			raise Exception("Timeout!!!")
 		pin = ""+result["result"]["pin_code"]
 		print("Pincode : "+pin)
 		time.sleep(3)
-		sendMessage("Pincode: "+pin)
+		line_bot_api.reply_message(event.reply_token,
+			TextSendMessage(text='Pincode : {}'.format(pin)))
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key+"&sysname=SB Premium").text)
 		if result["status"] != 200:
 			raise Exception("Timeout!!!")
