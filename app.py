@@ -226,8 +226,14 @@ def handle_message(event):
 		[event.source.user_id], [
 		TextSendMessage(text='THIS IS A MULTICAST MESSAGE'),])
 
-	if text == 'mid':
-		sendMessage('This Your Mid:\n{}'.format(event.source.user_id))
+	if text.lower().startswith('pc '):
+		sep = text.split(" ")
+		q = text.replace(sep[0] + " ","")
+		line_bot_api.multicast([event.source.user_id],
+		[TextSendMessage(text='{}'.format(q)),])
+
+	if text == 'myid' or text == 'id' or text == 'userid':
+		sendMessage('This Your UserID:\n{}'.format(event.source.user_id))
 
 	if text.lower().startswith('bc '):
 		sep = text.split(" ")
