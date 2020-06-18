@@ -217,6 +217,14 @@ def handle_message(event):
 			alt_text='ImageCarousel alt text', template=image_carousel_template)
 		line_bot_api.reply_message(event.reply_token, template_message)
 
+	elif text == 'token' and isinstance(event.source, SourceUser):
+		link_token_response = line_bot_api.issue_link_token(event.source.user_id)
+		line_bot_api.reply_message(
+			event.reply_token, [
+				TextSendMessage(text='link_token: ' + link_token_response.link_token)
+			]
+		)
+
 	if text == 'me':
 		name = line_bot_api.get_profile(sender).display_name
 		status = line_bot_api.get_profile(sender).status_message
@@ -229,7 +237,7 @@ def handle_message(event):
 		sendMessage(ret_)
 		ans = line_bot_api.get_profile(sender)
 		print(ans)
-		sendMessage(ans)
+		#sendMessage(ans)
 		sendMessage(ans["displayName"])
 		ans3 = json.loads(ans)
 		print(ans3)
