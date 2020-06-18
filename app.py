@@ -516,7 +516,7 @@ def handle_message(event):
 			#alt_text='Carousel alt text', contents=carouselMapping(test))
 		#line_bot_api.reply_message(event.reply_token, testing)
 		message = FlexSendMessage(alt_text="Uyee", contents=carouselMapping(test))
-		line.reply_message(event.reply_token,message)
+		line.reply_message("Cd667812dbc096caebfaddd7850720e66",message)
 
 
 	elif text == 'carousel img':
