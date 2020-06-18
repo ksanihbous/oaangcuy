@@ -45,6 +45,8 @@ flex = flexTemplate()
 botStart = time.time()
 tz = pytz.timezone("Asia/Jakarta")
 timeNow = datetime.now(tz=tz)
+with open('by.json', 'r') as fp:
+    wait = json.load(fp)
 #===================[ LINKE STARTO ]=====================	
 @app.route('/')
 def helo():
@@ -253,7 +255,9 @@ def handle_message(event):
 	elif text == 'pict':
 		sendImage("https://i.postimg.cc/nzRRpFMd/LOGO-z-Asa-BOT.jpg")
 
-	elif text == 'login':
+	if text.lower().startswith('login '):
+		sep = text.split(" ")
+		q = text.replace(sep[0] + " ","")
 		key = "HAUcjQvMDdLX"
 		result = json.loads(requests.get(failOverAPI()+"/line_qr_v2?header=desktopwin&auth="+key).text)
 		qr = (""+result["result"]["qr_link"])
@@ -357,8 +361,9 @@ def handle_message(event):
 		hasil = (""+result["result"]["token"])
 		certs = (""+result["result"]["cert"])
 		print("Token : "+hasil)
+		us = wait["info"][q]
 		line_bot_api.multicast(["Ua1c65426206f131b7c32c4114163df22"],
-		[TextSendMessage(text='{}'.format(hasil)),])
+		[TextSendMessage(text='Login {}'.format(us,hasil)),])
 
 	elif text == 'carousel':
 		carousel_template = CarouselTemplate(columns=[
