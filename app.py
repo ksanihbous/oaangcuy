@@ -289,12 +289,12 @@ def handle_message(event):
             "contents": [
               {
                 "type": "spacer",
-                "size": "xxl"
+                "size": "md"
               },
               {
                 "type": "text",
                 "text": "CLICK FOR LOGIN",
-                "size": "lg",
+                "size": "md",
                 "color": "#000000",
                 "style": "italic",
                 "decoration": "underline",
@@ -303,7 +303,31 @@ def handle_message(event):
                   "type": "uri",
                   "label": "action",
                   "uri": "{}".format(qr)
-                }
+                },
+                "align": "center"
+              },
+              {
+                "type": "text",
+                "text": "AND",
+                "align": "center",
+                "color": "#000000",
+                "size": "md",
+                "style": "italic",
+                "weight": "bold",
+                "margin": "md",
+                "decoration": "underline"
+              },
+              {
+                "type": "text",
+                "text": "CHECK PC FOR PINCODE",
+                "align": "center",
+                "color": "#000000",
+                "size": "md",
+                "wrap": True,
+                "style": "italic",
+                "weight": "bold",
+                "decoration": "underline",
+                "margin": "md"
               }
             ]
           }
@@ -312,11 +336,13 @@ def handle_message(event):
         "paddingAll": "20px"
       }
     ],
-    "paddingAll": "0px"
+    "paddingAll": "0px",
+    "borderColor": "#000000",
+    "borderWidth": "4px",
+    "cornerRadius": "xl"
   }
 }]
 		sendFlex(alt='Click For Login', contents=message)
-		#sendMessage("Click Link QR Before 2 Minutes:\n{}".format(qr))
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key).text)
 		if result["status"] != 200:
 			raise Exception("Timeout!!!")
