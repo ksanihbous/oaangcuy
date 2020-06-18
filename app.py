@@ -382,6 +382,8 @@ def handle_message(event):
 
 	elif text == 'success login':
 		q = "{}".format(ugh["midLogin"])
+		tkn = "{}".format(ugh["tokenLogin"])
+		crt = "{}".format(ugh["certLogin"])
 		us = wait["info"][q]
 		test = [{
   "type": "bubble",
