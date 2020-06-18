@@ -209,9 +209,10 @@ def handle_message(event):
 		ret_ = "╭─「 This You 」"
 		ret_ += "\n├ DisplayName : {}".format(name)
 		ret_ += "\n├ Status : {}".format(status)
-		ret_ += "\n├ Mid : {}".format(anu)
+		ret_ += "\n├ UserID : {}".format(anu)
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
+		sendMessage("{}".format(line_bot_api.get_profile(sender)))
 
 	if text == 'restart':
 		sendMessage("Success reboot...")
