@@ -214,7 +214,8 @@ def handle_message(event):
 		sendMessage(ret_)
 		ans = line_bot_api.get_profile(sender)
 		print(ans)
-		#ans2 = ans.text
+		sendMessage(ans)
+		sendMessage(ans["displayName"])
 		ans3 = json.loads(ans)
 		print(ans3)
 		sendMessage(ans)
