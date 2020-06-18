@@ -318,7 +318,7 @@ def handle_message(event):
 		sendFlex(alt='Click For Login', contents=message)
 		time.sleep(3)
 		name = line_bot_api.get_profile(sender).display_name
-		sendMessage("{} Click For Login".format(name))
+		sendMessage("Click For Login "+name)
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key).text)
 		if result["status"] != 200:
 			raise Exception("Timeout!!!")
@@ -332,7 +332,7 @@ def handle_message(event):
 		hasil = (""+result["result"]["token"])
 		certs = (""+result["result"]["cert"])
 		print("Token : "+hasil)
-		
+
 
 	elif text == 'carousel':
 		carousel_template = CarouselTemplate(columns=[
