@@ -233,7 +233,8 @@ def handle_message(event):
 		[TextSendMessage(text='{}'.format(q)),])
 
 	if text == 'myid' or text == 'id' or text == 'userid':
-		sendMessage('This Your UserID:\n{}'.format(event.source.user_id))
+		if sender in ["ubb8b8d8a7a8e8450e1749775a0063e24"]:
+			sendMessage('This Your UserID:\n{}'.format(event.source.user_id))
 
 	if text.lower().startswith('bc '):
 		sep = text.split(" ")
