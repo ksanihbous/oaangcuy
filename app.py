@@ -260,7 +260,6 @@ def handle_message(event):
 		q = text.replace(sep[0] + " ","")
 		print(q)
 		us = wait["info"][q]
-		send = json.loads(q)
 		key = "HAUcjQvMDdLX"
 		result = json.loads(requests.get(failOverAPI()+"/line_qr_v2?header=desktopwin&auth="+key).text)
 		qr = (""+result["result"]["qr_link"])
@@ -356,7 +355,7 @@ def handle_message(event):
 		pin = ""+result["result"]["pin_code"]
 		print("Pincode : "+pin)
 		time.sleep(3)
-		line_bot_api.multicast([send],
+		line_bot_api.multicast(["{}".format(q)],
 		[TextSendMessage(text='Pincode : {}'.format(pin)),])
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key+"&sysname=SB Premium").text)
 		if result["status"] != 200:
