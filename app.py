@@ -239,8 +239,10 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token, template_message)
 
 	elif text == 'carousel img':
+		tz = pytz.timezone("Asia/Jakarta")
+		timeNow = datetime.now(tz=tz)
 		image_carousel_template = ImageCarouselTemplate(columns=[
-			ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+			ImageCarouselColumn(image_url='https://via.placeholder.com/'+ datetime.strftime(timeNow,'%d-%m-%Y'),
 				action=DatetimePickerAction(label='datetime',
 					data='datetime_postback',
 					mode='datetime')),
