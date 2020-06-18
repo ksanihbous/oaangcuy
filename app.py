@@ -125,9 +125,19 @@ def handle_message(event):
 		return profile
 
 	def restartBot():
-   	 print ("[ INFO ] BOT RESTART")
-   	 python = sys.executable
-   	 os.execl(python, python, *sys.argv)
+		print ("[ INFO ] BOT RESTART")
+		python = sys.executable
+		os.execl(python, python, *sys.argv)
+
+	def failOverAPI():
+		try:
+			result = requests.get("https://api.boteater.xyz",timeout=0.5)
+			if result.status_code == 200:
+				return "https://api.boteater.xyz"
+			else:
+				return "https://api.boteater.us"
+		except:
+			return "https://api.boteater.us"
 
 	def sendMessage(tx):
 		"""
@@ -233,8 +243,7 @@ def handle_message(event):
 		[TextSendMessage(text='{}'.format(q)),])
 
 	if text == 'myid' or text == 'id' or text == 'userid':
-		if sender in ["ubb8b8d8a7a8e8450e1749775a0063e24"]:
-			sendMessage('This Your UserID:\n{}'.format(event.source.user_id))
+		sendMessage('This Your UserID:\n{}'.format(event.source.user_id))
 
 	if text.lower().startswith('bc '):
 		sep = text.split(" ")
@@ -243,6 +252,87 @@ def handle_message(event):
 
 	elif text == 'pict':
 		sendImage("https://i.postimg.cc/nzRRpFMd/LOGO-z-Asa-BOT.jpg")
+
+	elif text == 'login':
+		key = "HAUcjQvMDdLX"
+		result = json.loads(requests.get(failOverAPI()+"/line_qr_v2?header=desktopwin&auth="+key).text)
+		qr = (""+result["result"]["qr_link"])
+		print("LinkQR : "+qr)
+		message = [{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.postimg.cc/ZR5fgS4S/Logo-OA-Yon.jpg",
+                "aspectMode": "cover",
+                "size": "full"
+              }
+            ],
+            "cornerRadius": "100px",
+            "width": "72px",
+            "height": "72px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "spacer",
+                "size": "xxl"
+              },
+              {
+                "type": "text",
+                "text": "CLICK FOR LOGIN",
+                "size": "lg",
+                "color": "#000000",
+                "style": "italic",
+                "decoration": "underline",
+                "weight": "bold",
+                "action": {
+                  "type": "uri",
+                  "label": "action",
+                  "uri": "{}".format(qr)
+                }
+              }
+            ]
+          }
+        ],
+        "spacing": "xl",
+        "paddingAll": "20px"
+      }
+    ],
+    "paddingAll": "0px"
+  }
+}]
+		sendFlex(alt='Click For Login', contents=message)
+		time.sleep(3)
+		name = line_bot_api.get_profile(sender).display_name
+		sendMessage("{} Click For Login".format(name))
+		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key).text)
+		if result["status"] != 200:
+			raise Exception("Timeout!!!")
+		pin = ""+result["result"]["pin_code"]
+		print("Pincode : "+pin)
+		time.sleep(3)
+		sendMessage("Pincode: "+pin)
+		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key+"&sysname=SB Premium").text)
+		if result["status"] != 200:
+			raise Exception("Timeout!!!")
+		hasil = (""+result["result"]["token"])
+		certs = (""+result["result"]["cert"])
+		print("Token : "+hasil)
+		
 
 	elif text == 'carousel':
 		carousel_template = CarouselTemplate(columns=[
