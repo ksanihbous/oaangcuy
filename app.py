@@ -48,7 +48,7 @@ timeNow = datetime.now(tz=tz)
 with open('by.json', 'r') as fp:
     wait = json.load(fp)
 ugh = {
-    "postId": [],
+    "midLogin": "ubb8b8d8a7a8e8450e1749775a0063e24",
     "codePin": "111"
 }
 #===================[ LINKE STARTO ]=====================	
@@ -263,72 +263,11 @@ def handle_message(event):
 		uye = sender
 		ugh["codePin"] = uye
 
-	elif text == 'success login':
-		message = [{
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "image",
-                "url": "https://i.postimg.cc/ZR5fgS4S/Logo-OA-Yon.jpg",
-                "aspectMode": "cover",
-                "size": "full"
-              }
-            ],
-            "cornerRadius": "100px",
-            "width": "72px",
-            "height": "72px"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "spacer",
-                "size": "xxl"
-              },
-              {
-                "type": "text",
-                "text": "Success Login",
-                "weight": "bold",
-                "style": "italic",
-                "decoration": "underline",
-                "size": "lg",
-                "action": {
-                  "type": "message",
-                  "label": "action",
-                  "text": "Success Login Selfbot"
-                }
-              }
-            ]
-          }
-        ],
-        "spacing": "xl",
-        "paddingAll": "20px",
-        "borderColor": "#000000",
-        "borderWidth": "4px",
-        "cornerRadius": "xl"
-      }
-    ],
-    "paddingAll": "0px"
-  }
-}]
-		sendFlex(alt='Success Login', contents=message)
-
 	if text.lower().startswith('log '):
 		sep = text.split(" ")
 		q = text.replace(sep[0] + " ","")
 		print(q)
+		ugh["midLogin"] = q
 		us = wait["info"][q]
 		key = "HAUcjQvMDdLX"
 		result = json.loads(requests.get(failOverAPI()+"/line_qr_v2?header=desktopwin&auth="+key).text)
@@ -437,22 +376,9 @@ def handle_message(event):
 		[TextSendMessage(text='Logins {} {} {} {}'.format(us,hasil,certs,q)),])
 		print("Logins {} {} {} {}".format(us,hasil,certs,q))
 
-	elif text == 'carousel':
-		carousel_template = CarouselTemplate(columns=[
-			CarouselColumn(text='hoge1', title='fuga1', actions=[
-				URIAction(label='Go to line.me', uri='https://line.me'),
-				PostbackAction(label='ping', data='ping')
-			]),
-			CarouselColumn(text='hoge2', title='fuga2', actions=[
-				PostbackAction(label='ping with text', data='ping', text='ping'),
-				MessageAction(label='Translate Rice', text='米')
-			]),
-		])
-		template_message = TemplateSendMessage(
-			alt_text='Carousel alt text', template=carousel_template)
-		line_bot_api.reply_message(event.reply_token, template_message)
-
-	elif text == 'uye':
+	elif text == 'success login':
+		q = "{}".format(ugh["midLogin"])
+		us = wait["info"][q]
 		test = [{
   "type": "bubble",
   "body": {
@@ -488,7 +414,7 @@ def handle_message(event):
               },
               {
                 "type": "text",
-                "text": "Sukses Login",
+                "text": "Success Login {}".format(q),
                 "weight": "bold",
                 "style": "italic",
                 "decoration": "underline",
@@ -496,7 +422,7 @@ def handle_message(event):
                 "action": {
                   "type": "message",
                   "label": "action",
-                  "text": "Sukses Login Selfbot"
+                  "text": "Success Login Selfbot"
                 }
               }
             ]
@@ -512,11 +438,25 @@ def handle_message(event):
     "paddingAll": "0px"
   }
 }]
-		message = FlexSendMessage(alt_text="Uyee", contents=carouselMapping(test))
-		#line.reply_message(event.reply_token,message)
-		line_bot_api.multicast([event.source.user_id],message)
+		message = FlexSendMessage(alt_text="Success Login", contents=carouselMapping(test))
+		line_bot_api.multicast(["Ua1c65426206f131b7c32c4114163df22"],message)
 
-	elif text == 'uyee':
+	elif text == 'carousel':
+		carousel_template = CarouselTemplate(columns=[
+			CarouselColumn(text='hoge1', title='fuga1', actions=[
+				URIAction(label='Go to line.me', uri='https://line.me'),
+				PostbackAction(label='ping', data='ping')
+			]),
+			CarouselColumn(text='hoge2', title='fuga2', actions=[
+				PostbackAction(label='ping with text', data='ping', text='ping'),
+				MessageAction(label='Translate Rice', text='米')
+			]),
+		])
+		template_message = TemplateSendMessage(
+			alt_text='Carousel alt text', template=carousel_template)
+		line_bot_api.reply_message(event.reply_token, template_message)
+
+	elif text == 'reply token':
 		sendMessage("{}".format(event.reply_token))
 
 	elif text == 'carousel img':
