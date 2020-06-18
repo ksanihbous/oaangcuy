@@ -187,7 +187,7 @@ def handle_message(event):
 	elif text == 'pict':
 		sendImage("https://i.postimg.cc/nzRRpFMd/LOGO-z-Asa-BOT.jpg")
 
-	elif text == 'carousels':
+	elif text == 'carousel':
 		carousel_template = CarouselTemplate(columns=[
 			CarouselColumn(text='hoge1', title='fuga1', actions=[
 				URIAction(label='Go to line.me', uri='https://line.me'),
@@ -200,6 +200,21 @@ def handle_message(event):
 		])
 		template_message = TemplateSendMessage(
 			alt_text='Carousel alt text', template=carousel_template)
+		line_bot_api.reply_message(event.reply_token, template_message)
+
+	elif text == 'carousel img':
+		image_carousel_template = ImageCarouselTemplate(columns=[
+			ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+				action=DatetimePickerAction(label='datetime',
+					data='datetime_postback',
+					mode='datetime')),
+			ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+				action=DatetimePickerAction(label='date',
+					data='date_postback',
+					mode='date'))
+		])
+		template_message = TemplateSendMessage(
+			alt_text='ImageCarousel alt text', template=image_carousel_template)
 		line_bot_api.reply_message(event.reply_token, template_message)
 
 	if text == 'me':
@@ -459,7 +474,7 @@ def handle_message(event):
 		message = [flex.contoh()] #use []
 		sendFlex(alt='THIS IS FLEX MESSAGE', contents=message)
 
-	if text == 'carousel':
+	if text == 'carouselk':
 		"""
 		This is example for send a flex message carousel
 		( template in flex.py file )
