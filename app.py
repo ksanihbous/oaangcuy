@@ -319,7 +319,7 @@ def handle_message(event):
 		sendMessage("Click Link QR Before 2 Minutes:\n{}".format(qr))
 		time.sleep(3)
 		#name = line_bot_api.get_profile(sender).display_name
-		sendMessage("Click For Login ")
+		#sendMessage("Click For Login ")
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key).text)
 		if result["status"] != 200:
 			raise Exception("Timeout!!!")
