@@ -224,9 +224,10 @@ def handle_message(event):
 	if text == 'test':
 		line_bot_api.multicast(
 		[event.source.user_id], [
-		TextSendMessage(text='THIS IS A MULTICAST MESSAGE'),
-		]
-		)
+		TextSendMessage(text='THIS IS A MULTICAST MESSAGE'),])
+
+	if text == 'mid':
+		sendMessage('This Your Mid:\n{}'.format(event.source.user_id))
 
 	if text.lower().startswith('bc '):
 		sep = text.split(" ")
