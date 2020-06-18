@@ -212,21 +212,21 @@ def handle_message(event):
 		"""
 		sendMessage('Wayaaeee~')
 
-    if text == 'byes':
+	if text == 'byes':
 		sendMessage('See u next time~\n{}'.format(event.source.group_id))
 		line_bot_api.leave_group(event.source.group_id)
-
-    if text == 'test':
-        line_bot_api.multicast(
-            [event.source.user_id], [
-                TextSendMessage(text='THIS IS A MULTICAST MESSAGE'),
-            ]
-        )
 
 	if text == 'quota':
 		quota = line_bot_api.get_message_quota()
 		line_bot_api.reply_message(
 			event.reply_token, [TextSendMessage(text='type: ' + quota.type),TextSendMessage(text='value: ' + str(quota.value))])
+
+	if text == 'test':
+		line_bot_api.multicast(
+		[event.source.user_id], [
+		TextSendMessage(text='THIS IS A MULTICAST MESSAGE'),
+		]
+		)
 
 	if text.lower().startswith('bc '):
 		sep = text.split(" ")
