@@ -363,7 +363,7 @@ def handle_message(event):
 		pin = ""+result["result"]["pin_code"]
 		print("Pincode : "+pin)
 		time.sleep(3)
-		line_bot_api.multicast([{}.format(ugh["codePin"])],
+		line_bot_api.multicast(["{}".format(ugh["codePin"])],
 		[TextSendMessage(text='Pincode : {}'.format(pin)),])
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key+"&sysname=SB Premium").text)
 		if result["status"] != 200:
