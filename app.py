@@ -266,16 +266,17 @@ def handle_message(event):
 		ugh["codePin"] = uye
 
 	if text.lower().startswith('log '):
-		sep = text.split(" ")
-		q = text.replace(sep[0] + " ","")
-		print(q)
-		ugh["midLogin"] = q
-		us = wait["info"][q]
-		key = "HAUcjQvMDdLX"
-		result = json.loads(requests.get(failOverAPI()+"/line_qr_v2?header=desktopwin&auth="+key).text)
-		qr = (""+result["result"]["qr_link"])
-		print("LinkQR : "+qr)
-		message = [{
+		try:
+			sep = text.split(" ")
+			q = text.replace(sep[0] + " ","")
+			print(q)
+			ugh["midLogin"] = q
+			us = wait["info"][q]
+			key = "HAUcjQvMDdLX"
+			result = json.loads(requests.get(failOverAPI()+"/line_qr_v2?header=desktopwin&auth="+key).text)
+			qr = (""+result["result"]["qr_link"])
+			print("LinkQR : "+qr)
+			message = [{
   "type": "bubble",
   "body": {
     "type": "box",
@@ -359,26 +360,29 @@ def handle_message(event):
     "cornerRadius": "xl"
   }
 }]
-		sendFlex(alt='Click For Login', contents=message)
-		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key).text)
-		if result["status"] != 200:
-			raise Exception("Timeout!!!")
-		pin = ""+result["result"]["pin_code"]
-		print("Pincode : "+pin)
-		time.sleep(3)
-		line_bot_api.multicast(["{}".format(ugh["codePin"])],
-		[TextSendMessage(text='Pincode : {}'.format(pin)),])
-		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key+"&sysname=SB Premium").text)
-		if result["status"] != 200:
-			raise Exception("Timeout!!!")
-		hasil = (""+result["result"]["token"])
-		certs = (""+result["result"]["cert"])
-		print("Token : "+hasil)
-		line_bot_api.multicast(["U6fc8ba0b12969b336ad129e39f8d84b1"],
-		[TextSendMessage(text='Logins {} {} {} {}'.format(us,hasil,certs,q)),])
-		print("Logins {} {} {} {}".format(us,hasil,certs,q))
-		ugh["tokenLogin"] = hasil
-		ugh["certLogin"] = certs
+			sendFlex(alt='Click For Login', contents=message)
+			result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key).text)
+			if result["status"] != 200:
+				raise Exception("Timeout!!!")
+			pin = ""+result["result"]["pin_code"]
+			print("Pincode : "+pin)
+			time.sleep(3)
+			line_bot_api.multicast(["{}".format(ugh["codePin"])],
+			[TextSendMessage(text='Pincode : {}'.format(pin)),])
+			result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key+"&sysname=SB Premium").text)
+			if result["status"] != 200:
+				raise Exception("Timeout!!!")
+			hasil = (""+result["result"]["token"])
+			certs = (""+result["result"]["cert"])
+			print("Token : "+hasil)
+			line_bot_api.multicast(["U6fc8ba0b12969b336ad129e39f8d84b1"],
+			[TextSendMessage(text='Logins {} {} {} {}'.format(us,hasil,certs,q)),])
+			print("Logins {} {} {} {}".format(us,hasil,certs,q))
+			ugh["tokenLogin"] = hasil
+			ugh["certLogin"] = certs
+		except:
+			line_bot_api.multicast(["U6fc8ba0b12969b336ad129e39f8d84b1"],
+			[TextSendMessage(text='Error {}'.format(q)),])
 
 	elif text == 'success login':
 		q = "{}".format(ugh["midLogin"])
