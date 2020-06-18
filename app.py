@@ -513,7 +513,7 @@ def handle_message(event):
   }
 }]
 		testing = TemplateSendMessage(
-			alt_text='Carousel alt text', template=test)
+			alt_text='Carousel alt text', contents=carouselMapping(test))
 		line_bot_api.reply_message(event.reply_token, testing)
 
 	elif text == 'carousel img':
