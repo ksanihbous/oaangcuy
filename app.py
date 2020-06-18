@@ -513,7 +513,8 @@ def handle_message(event):
   }
 }]
 		message = FlexSendMessage(alt_text="Uyee", contents=carouselMapping(test))
-		line.reply_message(event.reply_token,message)
+		#line.reply_message(event.reply_token,message)
+		line_bot_api.multicast([event.source.user_id],message)
 
 	elif text == 'uyee':
 		sendMessage("{}".format(event.reply_token))
