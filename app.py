@@ -213,7 +213,13 @@ def handle_message(event):
 		sendMessage('Wayaaeee~')
 
 	if text == 'byes':
+		sendMessage('See u next time~\n{}'.format(event.source.group_id))
 		line_bot_api.leave_group(event.source.group_id)
+
+	if text == 'quota':
+		quota = line_bot_api.get_message_quota()
+		line_bot_api.reply_message(
+			event.reply_token, [TextSendMessage(text='type: ' + quota.type),TextSendMessage(text='value: ' + str(quota.value))])
 
 	if text.lower().startswith('bc '):
 		sep = text.split(" ")
@@ -239,10 +245,8 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token, template_message)
 
 	elif text == 'carousel img':
-		tz = pytz.timezone("Asia/Jakarta")
-		timeNow = datetime.now(tz=tz)
 		image_carousel_template = ImageCarouselTemplate(columns=[
-			ImageCarouselColumn(image_url='https://via.placeholder.com/'+ datetime.strftime(timeNow,'%d-%m-%Y'),
+			ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
 				action=DatetimePickerAction(label='datetime',
 					data='datetime_postback',
 					mode='datetime')),
