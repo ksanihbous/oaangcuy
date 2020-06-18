@@ -76,18 +76,23 @@ def handle_join(event):
 @handler.add(LeaveEvent)
 def handle_leave():
 	app.logger.info("Got leave event")
+	line_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(text='Leave this {}'.format(event.source.type)))
 @handler.add(MemberJoinedEvent)
 def handle_member_joined(event):
 	line_bot_api.reply_message(
 		event.reply_token,
-		TextSendMessage(
-			text='Got memberJoined event. event='))
+		TextSendMessage(text='Member join this {}'.format(event.source.type)))
 	#line_bot_api.reply_message(
 		#event.reply_token,
 		#TextSendMessage(text='Joined this {} {}'.format(event.source.type,event.source.room_id)))
 @handler.add(MemberLeftEvent)
 def handle_member_left(event):
 	app.logger.info("Got memberLeft event")
+	line_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(text='Leaves this {}'.format(event.source.type)))
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	"""
