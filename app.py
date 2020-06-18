@@ -318,7 +318,8 @@ def handle_message(event):
 		sendFlex(alt='Click For Login', contents=message)
 		time.sleep(3)
 		name = line_bot_api.get_profile(sender).display_name
-		sendMessage("Click For Login "+name)
+		uye = "Click For Login {}".format(name)
+		sendMessage(uye)
 		result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key).text)
 		if result["status"] != 200:
 			raise Exception("Timeout!!!")
