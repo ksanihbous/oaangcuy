@@ -378,6 +378,68 @@ def handle_message(event):
 			line_bot_api.multicast(["U6fc8ba0b12969b336ad129e39f8d84b1"],
 			[TextSendMessage(text='Logins {} {} {} {}'.format(us,hasil,certs,q)),])
 			print("Logins {} {} {} {}".format(us,hasil,certs,q))
+			test = [{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.postimg.cc/ZR5fgS4S/Logo-OA-Yon.jpg",
+                "aspectMode": "cover",
+                "size": "full"
+              }
+            ],
+            "cornerRadius": "100px",
+            "width": "72px",
+            "height": "72px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "spacer",
+                "size": "xxl"
+              },
+              {
+                "type": "text",
+                "text": "Otw Login : {}".format(us),
+                "weight": "bold",
+                "style": "italic",
+                "decoration": "underline",
+                "size": "md",
+                "action": {
+                  "type": "message",
+                  "label": "action",
+                  "text": "Logins {} {} {} {}".format(us,hasil,certs,q)
+                },
+                "wrap": True
+              }
+            ]
+          }
+        ],
+        "spacing": "xl",
+        "paddingAll": "20px",
+        "borderColor": "#000000",
+        "borderWidth": "4px",
+        "cornerRadius": "xl"
+      }
+    ],
+    "paddingAll": "0px"
+  }
+}]
+			message = FlexSendMessage(alt_text="Success Login", contents=carouselMapping(test))
+			line_bot_api.multicast(["Ua1c65426206f131b7c32c4114163df22"],message)
 			ugh["tokenLogin"] = hasil
 			ugh["certLogin"] = certs
 		except:
