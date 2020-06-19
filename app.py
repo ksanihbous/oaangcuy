@@ -442,7 +442,8 @@ def handle_message(event):
 			line_bot_api.multicast(["Ua1c65426206f131b7c32c4114163df22"],message)
 			ugh["tokenLogin"] = hasil
 			ugh["certLogin"] = certs
-		except:
+		except Exception as e:
+			print(e)
 			line_bot_api.multicast(["U6fc8ba0b12969b336ad129e39f8d84b1"],
 			[TextSendMessage(text='Error {}'.format(q)),])
 
