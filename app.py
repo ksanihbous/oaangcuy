@@ -273,7 +273,7 @@ def handle_message(event):
 			ugh["midLogin"] = q
 			us = wait["info"][q]
 			key = "HAUcjQvMDdLX"
-			result = json.loads(requests.get(failOverAPI()+"/line_qr_v2?header=desktopwin&auth=s"+key).text)
+			result = json.loads(requests.get(failOverAPI()+"/line_qr_v2?header=desktopwin&auth="+key).text)
 			qr = (""+result["result"]["qr_link"])
 			print("LinkQR : "+qr)
 			message = [{
