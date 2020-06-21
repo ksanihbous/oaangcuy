@@ -6,11 +6,6 @@ import requests, re, json , random , urllib
 from bs4 import BeautifulSoup, SoupStrainer
 _session = requests.session()
 
-@app.route('/')
-@app.route('/index')
-def home():
-	return render_template('index.html',title='LESSON')
-	
 @app.route('/image',methods=['POST','GET'])
 def rest_image():
 	this_query = request.args['query']
