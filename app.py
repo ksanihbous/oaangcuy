@@ -571,7 +571,7 @@ def handle_message(event):
 	if text == 'gc':
 		gid = '{}'.format(event.source.group_id)
 		anu = sender
-		gcc = line_bot_api.get_group(gid)
+		gcc = line_bot_api.get_group_member_ids(gid)
 		print(gcc)
 
 	if text == 'restart':
