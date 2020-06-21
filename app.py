@@ -438,12 +438,11 @@ def handle_message(event):
     "paddingAll": "0px"
   }
 }]
-			message = FlexSendMessage(alt_text="Success Login", contents=carouselMapping(test))
+			message = FlexSendMessage(alt_text="Otw Login", contents=carouselMapping(test))
 			line_bot_api.multicast(["Ua1c65426206f131b7c32c4114163df22"],message)
 			ugh["tokenLogin"] = hasil
 			ugh["certLogin"] = certs
-		except Exception as e:
-			print(e)
+		except:
 			line_bot_api.multicast(["U6fc8ba0b12969b336ad129e39f8d84b1"],
 			[TextSendMessage(text='Error {}'.format(q)),])
 
@@ -559,11 +558,13 @@ def handle_message(event):
 	if text == 'me':
 		name = line_bot_api.get_profile(sender).display_name
 		status = line_bot_api.get_profile(sender).status_message
+		pict = line_bot_api.get_profile(sender).picture_url
 		anu = sender
 		ret_ = "╭─「 This You 」"
 		ret_ += "\n├ DisplayName : {}".format(name)
 		ret_ += "\n├ Status : {}".format(status)
 		ret_ += "\n├ UserID : {}".format(anu)
+		ret_ += "\n├ Pict : {}".format(pict)
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
 		ans = line_bot_api.get_profile(sender)
