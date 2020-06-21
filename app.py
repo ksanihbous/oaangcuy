@@ -663,7 +663,11 @@ def handle_message(event):
 		ret_ += "\n├ PictURL : {}".format(pict)
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
-		sendImage(pict)
+		image_message = ImageSendMessage(
+		original_content_url=pict,
+		preview_image_url=pict
+		)
+		sendMessageGroup(image_message)
 
 	if text == 'gc':
 		gid = '{}'.format(event.source.group_id)
