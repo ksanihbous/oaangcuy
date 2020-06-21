@@ -12,7 +12,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-import requests, json, pafy , pytz , humanize , time
+import requests, json, pafy , pytz , humanize , time , ast
 from humanfriendly import format_timespan, format_size, format_number, format_length
 from datetime import datetime, timedelta
 from time import sleep
@@ -574,6 +574,23 @@ def handle_message(event):
 		gcc = line_bot_api.get_group_member_profile(gid, anu)
 		print(gcc)
 		line_bot_api.push_message(gid, TextSendMessage(text='Hello World!'))
+
+	if text.lower().startswith('mid '):
+		gid = '{}'.format(event.source.group_id)
+		anu = sender
+		if 'MENTION' in msg.contentMetadata.keys()!= None:
+			names = re.findall(r'@(\w+)', text)
+			mention = ast.literal_eval(msg.contentMetadata['MENTION'])
+			mentionees = mention['MENTIONEES']
+			lists = []
+			for mention in mentionees:
+				if mention["M"] not in lists:
+					lists.append(mention["M"])
+			ret_ = "「 Mid User 」"
+			for ls in lists:
+				gcc = line_bot_api.get_group_member_profile(gid, ls)
+		        print(gcc)
+		    line_bot_api.push_message(gid, TextSendMessage(text='Hello World!'))
 
 	if text == 'gcc':
 		gid = '{}'.format(event.source.group_id)
