@@ -156,6 +156,23 @@ def handle_message(event):
 		ggg = TextSendMessage(text=tx)
 		return(line_bot_api.reply_message(event.reply_token,ggg))
 
+	def sendMessageSender(tx):
+		"""
+		easy sending a message to Sender
+		param :
+		- text/message (str)
+		"""
+		line_bot_api.push_message(sender, TextSendMessage(text=tx))
+
+	def sendMessageGroup(tx):
+		"""
+		easy sending a message to Group
+		param :
+		- text/message (str)
+		"""
+		group = '{}'.format(event.source.group_id)
+		line_bot_api.push_message(group, TextSendMessage(text=tx))
+
 	def sendAudio(audio):
 		"""
 		Sending a audio
@@ -575,7 +592,12 @@ def handle_message(event):
 		print(gcc)
 		line_bot_api.push_message(gid, TextSendMessage(text='Hello World!'))
 		line_bot_api.push_message(sender, TextSendMessage(text='Hello World!'))
-		line_bot_api.push_message('<to>', TextSendMessage(text='Hello World!'))
+		line_bot_api.push_message(gid, TextSendMessage(text='Hello World!'))
+
+	if text == 'uy':
+		sendMessageSender("Uy")
+		sendMessageGroup("Uy2")
+
 
 	if text == 'gcc':
 		gid = '{}'.format(event.source.group_id)
