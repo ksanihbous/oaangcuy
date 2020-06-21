@@ -569,7 +569,9 @@ def handle_message(event):
 		sendMessage(ret_)
 
 	if text == 'gc':
-		gcc = line_bot_api.get_group_member_profile(group_id, user_id)
+		gid = '{}'.format(event.source.group_id)
+		anu = sender
+		gcc = line_bot_api.get_group_member_profile(gid, anu)
 		print(gcc)
 
 	if text == 'restart':
