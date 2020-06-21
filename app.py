@@ -562,18 +562,15 @@ def handle_message(event):
 		anu = sender
 		ret_ = "╭─「 This You 」"
 		ret_ += "\n├ DisplayName : {}".format(name)
-		ret_ += "\n├ Status : {}".format(status)
+		ret_ += "\n├ StatusMessage : {}".format(status)
 		ret_ += "\n├ UserID : {}".format(anu)
-		ret_ += "\n├ Pict : {}".format(pict)
+		ret_ += "\n├ PictURL : {}".format(pict)
 		ret_ += "\n╰─「 Test 」"
 		sendMessage(ret_)
-		ans = line_bot_api.get_profile(sender)
-		print(ans)
-		#sendMessage(ans)
-		sendMessage(ans["displayName"])
-		ans3 = json.loads(ans)
-		print(ans3)
-		sendMessage(ans)
+
+	if text == 'gc':
+		gcc = line_bot_api.get_group_member_profile(group_id)
+		print(gcc)
 
 	if text == 'restart':
 		sendMessage("Success reboot...")
