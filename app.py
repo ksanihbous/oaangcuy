@@ -571,8 +571,9 @@ def handle_message(event):
 	if text == 'gc':
 		gid = '{}'.format(event.source.group_id)
 		anu = sender
-		gcc = line_bot_api.get_group_member_ids(gid)
+		gcc = line_bot_api.get_group_member_profile(gid, anu)
 		print(gcc)
+		line_bot_api.push_message(to, TextSendMessage(text='Hello World!'))
 
 	if text == 'restart':
 		sendMessage("Success reboot...")
