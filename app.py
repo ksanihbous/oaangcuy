@@ -1,7 +1,7 @@
-# This script all made by ARSYBAI [ http://arsybai.xyz ]
-# Thats mean you can't modified or remove the copyright
+# This script all made by Asa [ http://asaxyz.herokuapp.com ]
+# Thats mean you can't modified or remove the Copyright 2k20
 # This just for learn
-# So please respect me by not removing myname
+# So please respect me by not removing Myname
 
 """BISSMILLAHIRRAHMANIRRAHIM"""
 from flask import Flask, request, abort
@@ -51,7 +51,9 @@ ugh = {
     "midLogin": "ubb8b8d8a7a8e8450e1749775a0063e24",
     "tokenLogin": "ubb8b8d8a7a8e8450e1749775a0063e24",
     "certLogin": "ubb8b8d8a7a8e8450e1749775a0063e24",
-    "codePin": "111"
+    "groupId": "111",
+    "senderByMid": "111",
+    "senderByGroup": "111"
 }
 #===================[ LINKE STARTO ]=====================	
 @app.route('/')
@@ -170,8 +172,16 @@ def handle_message(event):
 		param :
 		- text/message (str)
 		"""
-		group = '{}'.format(event.source.group_id)
-		line_bot_api.push_message(group, TextSendMessage(text=tx))
+		line_bot_api.push_message(gid, TextSendMessage(text=tx))
+
+	def sendMessageGroupV2(tx):
+		"""
+		easy sending a message to Group
+		param :
+		- text/message (str)
+		"""
+		gid2 = "{}".format(ugh["groupId"])
+		line_bot_api.push_message(gid2, TextSendMessage(text=tx))
 
 	def sendAudio(audio):
 		"""
@@ -280,7 +290,8 @@ def handle_message(event):
 
 	elif text == 'login':
 		uye = sender
-		ugh["codePin"] = uye
+		ugh["senderByMid"] = uye
+		ugh["groupId"] = gid
 
 	if text.lower().startswith('log '):
 		try:
@@ -384,7 +395,7 @@ def handle_message(event):
 			pin = ""+result["result"]["pin_code"]
 			print("Pincode : "+pin)
 			time.sleep(3)
-			line_bot_api.multicast(["{}".format(ugh["codePin"])],
+			line_bot_api.multicast(["{}".format(ugh["senderByMid"])],
 			[TextSendMessage(text='Pincode : {}'.format(pin)),])
 			result = json.loads(requests.get(result["result"]["callback"]+"&auth="+key+"&sysname=SB Premium").text)
 			if result["status"] != 200:
@@ -468,6 +479,74 @@ def handle_message(event):
 		tkn = "{}".format(ugh["tokenLogin"])
 		crt = "{}".format(ugh["certLogin"])
 		us = wait["info"][q]
+		pict = line_bot_api.get_profile("{}".ugh["senderByMid"]).picture_url
+		testt [{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": pict,
+                "aspectMode": "cover",
+                "size": "full"
+              }
+            ],
+            "cornerRadius": "100px",
+            "width": "72px",
+            "height": "72px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "spacer",
+                "size": "xxl"
+              },
+              {
+                "type": "text",
+                "text": "Success Login~",
+                "size": "md",
+                "color": "#000000",
+                "style": "italic",
+                "weight": "bold",
+                "decoration": "underline"
+              },
+              {
+                "type": "text",
+                "text": "File : {}".format(us),
+                "size": "md",
+                "color": "#000000",
+                "weight": "bold",
+                "style": "italic",
+                "decoration": "underline",
+                "wrap": True
+              }
+            ]
+          }
+        ],
+        "spacing": "xl",
+        "paddingAll": "20px"
+      }
+    ],
+    "paddingAll": "0px",
+    "borderColor": "#000000",
+    "borderWidth": "4px",
+    "cornerRadius": "xl"
+  }
+}]
+		messagee = FlexSendMessage(alt_text="Success Login", contents=carouselMapping(testt))
+		sendMessageGroupV2(messagee)
 		test = [{
   "type": "bubble",
   "body": {
@@ -484,7 +563,7 @@ def handle_message(event):
             "contents": [
               {
                 "type": "image",
-                "url": "https://i.postimg.cc/ZR5fgS4S/Logo-OA-Yon.jpg",
+                "url": pict,
                 "aspectMode": "cover",
                 "size": "full"
               }
@@ -597,7 +676,6 @@ def handle_message(event):
 	if text == 'uy':
 		sendMessageSender("Uy")
 		sendMessageGroup("Uy2")
-
 
 	if text == 'gcc':
 		gid = '{}'.format(event.source.group_id)
