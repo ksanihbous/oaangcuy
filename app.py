@@ -138,7 +138,7 @@ def helo():
   <tr>
     <td>/instagram?</td>
     <td>username</td>
-    <td><a href="instagram?username=sajak_detik"><button type="button">Example</button></a></td>
+    <td>"https://asaxyz.herokuapp.com/instagram?username=sajak_detik"><button type="button">Example</button></a></td>
   </tr>
   <tr>
     <td>/twitter?</td>
