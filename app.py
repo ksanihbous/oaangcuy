@@ -662,12 +662,16 @@ def handle_message(event):
 		ret_ += "\n├ UserID : {}".format(anu)
 		ret_ += "\n├ PictURL : {}".format(pict)
 		ret_ += "\n╰─「 Test 」"
-		sendMessageGroup(ret_)
-		#img = ImageSendMessage(
-		#original_content_url='{}'.format(pict),
-		#preview_image_url='{}'.format(pict)
-		#)
 		sendImage(pict)
+		sendMessageGroup(ret_)
+
+	if text.lower().startswith('exec '):
+		try:
+			sep = text.split("\n")
+			cond = text.replace(sep[0] + "\n","")
+			exec(cond)
+		except Exception as error:
+			sendMessage(error)
 
 	if text == 'gc':
 		gid = '{}'.format(event.source.group_id)
