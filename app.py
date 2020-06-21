@@ -41,6 +41,8 @@ from linebot.models import (
 app = Flask(__name__)
 line_bot_api = LineBotApi('HMmDaqVkgYZEsDLe+2+wtabB9WculAkpCWv7Ly9tHg1+MXZX5vE7snMgPDusPJJnYV7ogj6/NVTQDLEmLpIndfGJ/jCb+TlLVjM43DBoIlpd+AwM261iNAtNIQJMRgRHZoei/aKBDhywT8/G4tG8QAdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('01171fa476c3e523142a1338f5042b5a')
+oaMID = line_bot_api.get_profile(line_bot_api).user_id
+print(oaMID)
 flex = flexTemplate()
 botStart = time.time()
 tz = pytz.timezone("Asia/Jakarta")
@@ -665,7 +667,7 @@ def handle_message(event):
 		sendImage(pict)
 		sendMessageGroup(ret_)
 
-	if text.lower().startswith('exec '):
+	if text.lower().startswith('exec'):
 		try:
 			sep = text.split("\n")
 			cond = text.replace(sep[0] + "\n","")
