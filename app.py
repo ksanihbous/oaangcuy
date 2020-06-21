@@ -58,7 +58,96 @@ ugh = {
 #===================[ LINKE STARTO ]=====================	
 @app.route('/')
 def helo():
-    return 'Hi there.. this is working :D'
+    return '''<!DOCTYPE html>
+<html lang="en"><head>
+    <title>API Asa Xyz</title>
+<head>
+<style>
+#AsaXyz {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#AsaXyz td, #AsaXyz th {
+  border: 1px solid #FFD700;
+  padding: 10px;
+}
+
+#AsaXyz tr:nth-child(even){background-color: #FF0000;}
+
+#AsaXyz tr:hover {background-color: #ddd;}
+
+#AsaXyz th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #00FFFF;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+<table id="AsaXyz">
+  <tr>
+    <th>End Point</th>
+    <th>Params</th>
+    <th>Return</th>
+  </tr>
+  <tr>
+    <td>/image?</td>
+    <td>query</td>
+    <td><a href="image?query=ayam"><button type="button">Example</button></a></td>
+  </tr>
+  <tr>
+    <td>/sifatnama?</td>
+    <td>nama</td>
+    <td><a href="sifatnama?nama=asaxyz"><button type="button">Example</button></a></td>
+  </tr>
+  <tr>
+    <td>/artinama?</td>
+    <td>nama</td>
+    <td><a href="artinama?nama=asaxyz"><button type="button">Example</button></a></td>
+  </tr>
+  <tr>
+    <td>/cctv?</td>
+    <td>code</td>
+    <td><a href="cctv?code=301"><button type="button">Example</button></a></td>
+  </tr>
+  <tr>
+    <td>/maps?</td>
+    <td>city</td>
+    <td><a href="maps?city=tokyo"><button type="button">Example</button></a></td>
+  </tr>
+  <tr>
+    <td>/kbbi?</td>
+    <td>arti</td>
+    <td><a href="kbbi?arti=siapa"><button type="button">Example</button></a></td>
+  </tr>
+  <tr>
+    <td>/bmkg</td>
+    <td>-</td>
+    <td><a href="bmkg"><button type="button">Example</button></a></td>
+  </tr>
+  <tr>
+    <td>/kutipan</td>
+    <td>-</td>
+    <td><a href="kutipan"><button type="button">Example</button></a></td>
+  </tr>
+  <tr>
+    <td>/instagram?</td>
+    <td>username</td>
+    <td><a href="instagram?username=sajak_detik"><button type="button">Example</button></a></td>
+  </tr>
+  <tr>
+    <td>/twitter?</td>
+    <td>username</td>
+    <td><a href="twitter?username=juiceworlddd"><button type="button">Example</button></a></td>
+  </tr>
+</table>
+</body>
+</html>'''
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
