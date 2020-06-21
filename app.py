@@ -575,7 +575,7 @@ def handle_message(event):
 		print(gcc)
 		line_bot_api.push_message(gid, TextSendMessage(text='Hello World!'))
 		line_bot_api.push_message(sender, TextSendMessage(text='Hello World!'))
-		line_bot_api.push_message(gid, TextSendMessage(text='Hello World!'))
+		line_bot_api.push_message('<to>', TextSendMessage(text='Hello World!'))
 
 	if text == 'gcc':
 		gid = '{}'.format(event.source.group_id)
