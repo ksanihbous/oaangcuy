@@ -266,7 +266,7 @@ def handle_message(event):
 		"""
 		sendMessage('Wayaaeee~')
 
-	elif text == "key" or text == "keyy":
+	elif text == "keyy":
 		sendMessage("""Keyword BARRYZTA:
 1. Cara Kerja
 2. Pricelist
@@ -275,7 +275,7 @@ def handle_message(event):
 5. Pendapatan / upah
 6. Rekor""")
 
-	elif text == "cara kerja":
+	elif text == "cara kerja" or text == "1":
 		sendMessage("""❣︎ CARA KERJA RESSELLER ❣︎
 
 ■ Cara kerjanya gimana kak?
@@ -290,7 +290,7 @@ Untuk mengetahui berapa pendapatan setiap orderan silahkan ketik "pendapatan" at
 
 Masih ada yang ingin di tanyakan? Silahkan pc salah satu admin.""")
 
-	if text == 'pricelist':
+	if text == 'pricelist' or text == "2":
 		message1 = TextSendMessage(text=''': : 🍓𝐏𝐑𝐈𝐂𝐄𝐋𝐈𝐒𝐓 𝐉𝐀𝐒𝐀 𝐋𝐏𝐌
 & 𝐋𝐈𝐊𝐄 𝐓𝐋 : : 🍓
 ✶ J A S A S S G M ✶
@@ -341,7 +341,7 @@ Note :
 		message4 = TextSendMessage(text='''Untuk contoh format promosi bisa cek note :)''')
 		sendMessageV2([message1,message2,message3,message4])
 
-	if text == 'format orderan':
+	if text == 'format orderan' or text == "3":
 		message1 = TextSendMessage(text='''🍓 : : 𝐅𝐎𝐑𝐌𝐀𝐓 𝐎𝐑𝐃𝐄𝐑 𝐒/𝐓/𝐄 : : 🍓
 ➤ Nama :
 ➤ Link ID :
@@ -382,11 +382,11 @@ Note :
 └─ 𝙏𝙀𝙍𝙄𝙈𝘼 𝙆𝘼𝙎𝙄𝙃. 𝘼𝙆𝘼𝙉 𝙎𝙀𝙂𝙀𝙍𝘼 𝙆𝘼𝙈𝙄 𝙋𝙍𝙊𝙎𝙀𝙎^^''')
 		sendMessageV2([message1,message2,message3,message4,message5])
 
-	elif text == "payment":
+	elif text == "payment" or text == "4":
 		sendMessage("""🍓 : : PAYMENT : : 🍓
 BNI : 0974711722 (Maria Nathania) DANA/OVO/TSEL : 082144219281""")
 
-	if text == 'pendapatan' or text == 'upah':
+	if text == 'pendapatan' or text == 'upah' or text == "5":
 		message1 = TextSendMessage(text='''🍓 JASA UP LPM 🍓
 50 LPM | 500rp
 100 LPM | 1000rb
@@ -424,7 +424,7 @@ BNI : 0974711722 (Maria Nathania) DANA/OVO/TSEL : 082144219281""")
 80K 700© = Rp. 7000''')
 		sendMessageV2([message1,message2])
 
-	elif text == "rekor":
+	elif text == "rekor" or text == "6":
 		sendMessage("{}".format(ugh["rekor"]))
 
 	if text.lower().startswith('change rekor '):
@@ -435,6 +435,14 @@ BNI : 0974711722 (Maria Nathania) DANA/OVO/TSEL : 082144219281""")
 			sendMessage("Rekor telah di ubah\nSilahkan Cek Ketik Rekor")
 		else:
 			sendMessage("Perintah di tolak khusus Admin bot~")
+
+	elif text == "speed":
+		start = time.time()
+		line_bot_api.multicast(
+		[event.source.user_id], [
+		TextSendMessage(text='</>'),])
+		elapsed_time = time.time() - start
+		sendMessage(to,"Time:\n%s"%str(round(elapsed_time,8)))
 
 	if text == 'byes':
 		sendMessage('See u next time~\n{}'.format(event.source.group_id))
