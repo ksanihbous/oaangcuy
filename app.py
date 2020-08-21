@@ -256,6 +256,7 @@ def handle_message(event):
 		this is example if u just want to send a text message
 		"""
 		sendMessage('Wayaaeee~')
+
 	elif text == "key":
 		sendMessage("""Keyword BARRYZTA:
 1. Cara Kerja
@@ -265,6 +266,74 @@ def handle_message(event):
 5. Own & admin
 6. Pendapatan / upah
 7. Rekor""")
+
+	elif text == "cara kerja":
+		sendMessage("""❣︎ CARA KERJA RESSELLER ❣︎
+
+■ Cara kerjanya gimana kak?
+
+1. Cara kerjanya gampang kok, kalian cukup cari orderan aja.. lalu setiap 1× orderan yang kalian dapatkan akan dapat upah.
+
+2. Untuk cari ssgm dan bantu nge Up lpm kalian akan dapat , [10ssgm/lpm=Rp.500]
+
+3. Untuk Sewa lpm kalian akan dapat Rp.200 untk 1x sebar
+
+Untuk mengetahui berapa pendapatan setiap orderan silahkan ketik "pendapatan" atau "6"
+
+Masih ada yang ingin di tanyakan? Silahkan pc salah satu admin.""")
+
+
+	if text == 'pricelist':
+		message1 = TextSendMessage(text=''': : 🍓𝐏𝐑𝐈𝐂𝐄𝐋𝐈𝐒𝐓 𝐉𝐀𝐒𝐀 𝐋𝐏𝐌
+& 𝐋𝐈𝐊𝐄 𝐓𝐋 : : 🍓
+✶ J A S A S S G M ✶
+80 SSGM = 5K
+160 SSGM = 10K
+330 SSGM = 20K
+420 SSGM = 30K
+✶ J A S A U P L P M ✶
+50 LPM = 5K
+100 LPM = 10K
+✶ J A S A S E W A L P M ✶
+5 x SHARE 3 HARI = 5K
+5 x SHARE 7 HARI = 10K
+5 x SHARE 10 HARI = 15K
+✶ J A S A P O L P M ✶
+100 LPM = 10K
+200 LPM = 20K
+500 LPM = 50K''')
+		message2 = TextSendMessage(text='''✶ L I K E T I M E L I N E ✶
+400 LIKE = 3K
+1200 LIKE = 5K
+2200 LIKE = 10K
+4400 LIKE = 25K
+
+Note :
+*Proses cepat bisa di tunggu
+* Berlaku kelipatan
+* Ada bukti (ss an sesudah dan sebelum)
+* Bisa req mmber lpm & waktu sbar''')
+		message3 = TextSendMessage(text=''': : 🍓𝐏𝐑𝐈𝐂𝐄𝐋𝐈𝐒𝐓 𝐒/𝐓/𝐄🍓 : :
+BNI||DANA||OVO TSEL
+5K 50© 40©
+10K 130© 110©
+15K 160© 140©
+20K 190© 170©
+30K 280© 260©
+40K 360© 340©
+50K 450© 430©
+60K 520© 500©
+70K 600© 580©
+80K 670© 650©
+
+Note :
+*Allreg & Fastgift
+*Bebas keep (No bukti = angus)
+*Mahal? Rate lgi naik kak^^
+*Hrga bisa sja berubah''')
+		message4 = TextSendMessage(text='''Untuk contoh format promosi bisa cek note :)''')
+		sendMessageV2([message1,message2,message3,message4])
+
 	if text == 'byes':
 		sendMessage('See u next time~\n{}'.format(event.source.group_id))
 		line_bot_api.leave_group(event.source.group_id)
