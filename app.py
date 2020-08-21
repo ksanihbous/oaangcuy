@@ -119,6 +119,7 @@ def handle_message(event):
 	text message 
 	"""
 	text = event.message.text.lower()
+	txt = event.message.text.lower()
 
 	"""
 	sender ID
@@ -149,10 +150,10 @@ def handle_message(event):
 		python = sys.executable
 		os.execl(python, python, *sys.argv)
 
-	def removeCmd(text, text):
+	def removeCmd(txt, text):
 		key = settings["keyCommand"]
 		if settings["setKey"] == False: key = ''
-		rmv = len(key + text) + 1
+		rmv = len(key + txt) + 1
 		return text[rmv:]
 
 	def failOverAPI():
@@ -431,7 +432,7 @@ BNI : 0974711722 (Maria Nathania) DANA/OVO/TSEL : 082144219281""")
 80K 700© = Rp. 7000''')
 		sendMessageV2([message1,message2])
 
-	elif text == "rekor" or text == "6":
+	elif txt == "rekor" or text == "6":
 		sendMessage("{}".format(ugh["rekor"]))
 
 	if text.lower().startswith('change rekor '):
