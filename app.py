@@ -39,8 +39,8 @@ from linebot.models import (
     SeparatorComponent,
 )
 app = Flask(__name__)
-line_bot_api = LineBotApi('A9uKhm5nRYsvPjw3eY4XSrD4ot5iDkYwyqxMNuBS214JslXDVNfM3W4X6tISFGqsDm0Op6NqXEMQP4CKPJp8VmRb5j3C6hA1/un8dlsYEjn23EXzCjEkL+uKDJlJzSLPrfMhZde88eBgjyikhXwV0wdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('a4c434cc1cb774e0184c1f561ba5e427')
+line_bot_api = LineBotApi('HMmDaqVkgYZEsDLe+2+wtabB9WculAkpCWv7Ly9tHg1+MXZX5vE7snMgPDusPJJnYV7ogj6/NVTQDLEmLpIndfGJ/jCb+TlLVjM43DBoIlpd+AwM261iNAtNIQJMRgRHZoei/aKBDhywT8/G4tG8QAdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('01171fa476c3e523142a1338f5042b5a')
 flex = flexTemplate()
 botStart = time.time()
 tz = pytz.timezone("Asia/Jakarta")
