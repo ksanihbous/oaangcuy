@@ -256,7 +256,15 @@ def handle_message(event):
 		this is example if u just want to send a text message
 		"""
 		sendMessage('Wayaaeee~')
-
+	elif text == "key":
+		sendMessage("""Keyword BARRYZTA:
+1. Cara Kerja
+2. Pricelist
+3. Format orderan
+4. Payment
+5. Own & admin
+6. Pendapatan / upah
+7. Rekor""")
 	if text == 'byes':
 		sendMessage('See u next time~\n{}'.format(event.source.group_id))
 		line_bot_api.leave_group(event.source.group_id)
