@@ -433,6 +433,8 @@ BNI : 0974711722 (Maria Nathania) DANA/OVO/TSEL : 082144219281""")
 			text_ = text.replace(sep[1] + " ","")
 			ugh["rekor"] = text_
 			sendMessage("Rekor telah di ubah\nSilahkan Cek Ketik Rekor")
+		else:
+			sendMessage("Perintah di tolak khusus Admin bot~")
 
 	if text == 'byes':
 		sendMessage('See u next time~\n{}'.format(event.source.group_id))
