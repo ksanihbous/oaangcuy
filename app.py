@@ -53,7 +53,15 @@ ugh = {
     "certLogin": "ubb8b8d8a7a8e8450e1749775a0063e24",
     "groupId": "111",
     "senderByMid": "111",
-    "senderByGroup": "111"
+    "senderByGroup": "111",
+    "rekor": """🥇Aluna
+Rp14.950
+🥈Aleya
+Rp6.600
+🥉Jombi
+Rp6.000
+
+Untuk rekapan saldo silakan cek note"""
 }
 #===================[ LINKE STARTO ]=====================	
 @app.route('/')
@@ -365,7 +373,7 @@ Note :
 ➤ Link OA :
 ➤ Jmlh Ordrn :
 └─ 𝙏𝙀𝙍𝙄𝙈𝘼 𝙆𝘼𝙎𝙄𝙃. 𝘼𝙆𝘼𝙉 𝙎𝙀𝙂𝙀𝙍𝘼 𝙆𝘼𝙈𝙄 𝙋𝙍𝙊𝙎𝙀𝙎^^''')
-		message5 = TextSendMessage(text=''' : : 𝐅𝐎𝐑𝐌𝐀𝐓 𝐋𝐈𝐊𝐄 𝐓𝐋 : : 🍓
+		message5 = TextSendMessage(text='''🍓 : : 𝐅𝐎𝐑𝐌𝐀𝐓 𝐋𝐈𝐊𝐄 𝐓𝐋 : : 🍓
 ➤ Nama :
 ➤ Link ID :
 ➤ Link TL :
@@ -373,6 +381,57 @@ Note :
 ➤ Jmlh Ordrn :
 └─ 𝙏𝙀𝙍𝙄𝙈𝘼 𝙆𝘼𝙎𝙄𝙃. 𝘼𝙆𝘼𝙉 𝙎𝙀𝙂𝙀𝙍𝘼 𝙆𝘼𝙈𝙄 𝙋𝙍𝙊𝙎𝙀𝙎^^''')
 		sendMessageV2([message1,message2,message3,message4,message5])
+
+	elif text == "payment":
+		sendMessage("""🍓 : : PAYMENT : : 🍓
+BNI : 0974711722 (Maria Nathania) DANA/OVO/TSEL : 082144219281""")
+
+	if text == 'pendapatan' or text == 'upah':
+		message1 = TextSendMessage(text='''🍓 JASA UP LPM 🍓
+50 LPM | 500rp
+100 LPM | 1000rb
+
+🍓 JASA SEWA LPM 🍓
+5 x 3 | 500rp
+5 x 7 | 1.000rb
+5 x 10 | 1.500rb
+
+🍓 JASA PO LPM 🍓
+50 LPM | 500rp
+100 LPM | 1.000rb
+200 LPM | 2.000rb
+500 LPM | 3.000rb
+
+🍓 JASA SSGM 🍓
+80 SSGM | 500rp
+160 SSGM | 1000rb
+330 SSGM | 2000rb
+
+🍓 LIKE TIMELINE 🍓
+400 LIKE | 300rp
+1200 LIKE | 500rp
+2200 LIKE | 1.000rb
+4400 LIKE | 2.500rb''')
+		message2 = TextSendMessage(text='''🍓 STIKER/TEMA/EMOT 🍓
+5K 50© = Rp. 500
+10K 130© = Rp. 1000
+15K 160© = Rp. 1500
+20K 200© = Rp. 2000
+45K 420© = Rp. 3000
+55K. 500© = Rp. 4000
+60K 560© = Rp. 5000
+70K 630© = Rp. 6000
+80K 700© = Rp. 7000''')
+		sendMessageV2([message1,message2])
+
+	elif text == "rekor":
+		sendMessage("{}".format(ugh["rekor"]))
+
+	if text.lower().startswith('change rekor '):
+		sep = text.split(" ")
+		text_ = text.replace(sep[1] + " ","")
+		ugh["rekor"] = text_
+		sendMessage("Rekor telah di ubah\nSilahkan Cek Ketik Rekor")
 
 	if text == 'byes':
 		sendMessage('See u next time~\n{}'.format(event.source.group_id))
