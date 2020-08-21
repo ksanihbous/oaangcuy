@@ -45,6 +45,7 @@ flex = flexTemplate()
 botStart = time.time()
 tz = pytz.timezone("Asia/Jakarta")
 timeNow = datetime.now(tz=tz)
+admin = ["Ua1c65426206f131b7c32c4114163df22","U27b1a5c37d9173c5d73d70748ca546cc"]
 with open('by.json', 'r') as fp:
     wait = json.load(fp)
 ugh = {
@@ -427,10 +428,11 @@ BNI : 0974711722 (Maria Nathania) DANA/OVO/TSEL : 082144219281""")
 		sendMessage("{}".format(ugh["rekor"]))
 
 	if text.lower().startswith('change rekor '):
-		sep = text.split(" ")
-		text_ = text.replace(sep[1] + " ","")
-		ugh["rekor"] = text_
-		sendMessage("Rekor telah di ubah\nSilahkan Cek Ketik Rekor")
+		if sender in admin:
+			sep = text.split(" ")
+			text_ = text.replace(sep[1] + " ","")
+			ugh["rekor"] = text_
+			sendMessage("Rekor telah di ubah\nSilahkan Cek Ketik Rekor")
 
 	if text == 'byes':
 		sendMessage('See u next time~\n{}'.format(event.source.group_id))
