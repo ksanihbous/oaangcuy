@@ -271,9 +271,8 @@ def handle_message(event):
 2. Pricelist
 3. Format orderan
 4. Payment
-5. Own & admin
-6. Pendapatan / upah
-7. Rekor""")
+5. Pendapatan / upah
+6. Rekor""")
 
 	elif text == "cara kerja":
 		sendMessage("""❣︎ CARA KERJA RESSELLER ❣︎
