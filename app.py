@@ -46,6 +46,7 @@ botStart = time.time()
 tz = pytz.timezone("Asia/Jakarta")
 timeNow = datetime.now(tz=tz)
 admin = ["Ua1c65426206f131b7c32c4114163df22","U27b1a5c37d9173c5d73d70748ca546cc"]
+settings ={"keyCommand":"","setKey":False}
 with open('by.json', 'r') as fp:
     wait = json.load(fp)
 ugh = {
@@ -147,6 +148,12 @@ def handle_message(event):
 		print ("[ INFO ] BOT RESTART")
 		python = sys.executable
 		os.execl(python, python, *sys.argv)
+
+	def removeCmd(text, text):
+		key = settings["keyCommand"]
+		if settings["setKey"] == False: key = ''
+		rmv = len(key + text) + 1
+		return text[rmv:]
 
 	def failOverAPI():
 		try:
@@ -428,9 +435,10 @@ BNI : 0974711722 (Maria Nathania) DANA/OVO/TSEL : 082144219281""")
 		sendMessage("{}".format(ugh["rekor"]))
 
 	if text.lower().startswith('change rekor '):
+		text_ = removeCmd('change rekor', text)
 		if sender in admin:
-			sep = text.split(" ")
-			text_ = text.replace(sep[1] + " ","")
+			#sep = text.split(" ")
+			#text_ = text.replace(sep[1] + " ","")
 			ugh["rekor"] = text_
 			sendMessage("Rekor telah di ubah\nSilahkan Cek Ketik Rekor")
 		else:
