@@ -257,7 +257,7 @@ def handle_message(event):
 		"""
 		sendMessage('Wayaaeee~')
 
-	elif text == "key":
+	elif text == "key" or text == "keyy":
 		sendMessage("""Keyword BARRYZTA:
 1. Cara Kerja
 2. Pricelist
@@ -281,7 +281,6 @@ def handle_message(event):
 Untuk mengetahui berapa pendapatan setiap orderan silahkan ketik "pendapatan" atau "6"
 
 Masih ada yang ingin di tanyakan? Silahkan pc salah satu admin.""")
-
 
 	if text == 'pricelist':
 		message1 = TextSendMessage(text=''': : 🍓𝐏𝐑𝐈𝐂𝐄𝐋𝐈𝐒𝐓 𝐉𝐀𝐒𝐀 𝐋𝐏𝐌
@@ -333,6 +332,47 @@ Note :
 *Hrga bisa sja berubah''')
 		message4 = TextSendMessage(text='''Untuk contoh format promosi bisa cek note :)''')
 		sendMessageV2([message1,message2,message3,message4])
+
+	if text == 'format orderan':
+		message1 = TextSendMessage(text='''🍓 : : 𝐅𝐎𝐑𝐌𝐀𝐓 𝐎𝐑𝐃𝐄𝐑 𝐒/𝐓/𝐄 : : 🍓
+➤ Nama :
+➤ Link ID :
+➤ Link S/T/E :
+➤ Jumlah coin :
+➤ Sisa coin :
+└─ 𝙏𝙀𝙍𝙄𝙈𝘼 𝙆𝘼𝙎𝙄𝙃. 𝘼𝙆𝘼𝙉 𝙎𝙀𝙂𝙀𝙍𝘼 𝙆𝘼𝙈𝙄 𝙋𝙍𝙊𝙎𝙀𝙎^^''')
+		message2 = TextSendMessage(text='''🍓 : : 𝐅𝐎𝐑𝐌𝐀𝐓 𝐉𝐀𝐒𝐀 𝐏𝐎/𝐔𝐏 𝐀𝐊𝐔𝐍 𝐋𝐏𝐌 : : 🍓
+➤ Nama :
+➤ Link id :
+➤ Nama Akun :
+➤ ID Akun :
+➤ Jumlah lpm :
+➤ Jumlah member :
+➤ No.Hp :
+└─𝙏𝙀𝙍𝙄𝙈𝘼 𝙆𝘼𝙎𝙄𝙃. 𝘼𝙆𝘼𝙉 𝙎𝙀𝙂𝙀𝙍𝘼 𝙆𝘼𝙈𝙄 𝙋𝙍𝙊𝙎𝙀𝙎^^''')
+		message3 = TextSendMessage(text='''🍓 : : 𝐅𝐎𝐑𝐌𝐀𝐓 𝐒𝐄𝐖𝐀 𝐋𝐏𝐌 : : 🍓
+➤ Nama :
+➤ Link ID :
+➤ Orderan :
+➤ Start :
+➤ And :
+➤ Jadwal :
+└─ 𝙏𝙀𝙍𝙄𝙈𝘼 𝙆𝘼𝙎𝙄𝙃. 𝘼𝙆𝘼𝙉 𝙎𝙀𝙂𝙀𝙍𝘼 𝙆𝘼𝙈𝙄 𝙋𝙍𝙊𝙎𝙀𝙎^^''')
+		message4 = TextSendMessage(text='''🍓  : : 𝐅𝐎𝐑𝐌𝐀𝐓 𝐉𝐀𝐒𝐀 𝐒𝐒𝐆𝐌 : : 🍓
+➤ Nama :
+➤ Link id :
+➤ Nama OA :
+➤ Link OA :
+➤ Jmlh Ordrn :
+└─ 𝙏𝙀𝙍𝙄𝙈𝘼 𝙆𝘼𝙎𝙄𝙃. 𝘼𝙆𝘼𝙉 𝙎𝙀𝙂𝙀𝙍𝘼 𝙆𝘼𝙈𝙄 𝙋𝙍𝙊𝙎𝙀𝙎^^''')
+		message5 = TextSendMessage(text=''' : : 𝐅𝐎𝐑𝐌𝐀𝐓 𝐋𝐈𝐊𝐄 𝐓𝐋 : : 🍓
+➤ Nama :
+➤ Link ID :
+➤ Link TL :
+➤ Orderan :
+➤ Jmlh Ordrn :
+└─ 𝙏𝙀𝙍𝙄𝙈𝘼 𝙆𝘼𝙎𝙄𝙃. 𝘼𝙆𝘼𝙉 𝙎𝙀𝙂𝙀𝙍𝘼 𝙆𝘼𝙈𝙄 𝙋𝙍𝙊𝙎𝙀𝙎^^''')
+		sendMessageV2([message1,message2,message3,message4,message5])
 
 	if text == 'byes':
 		sendMessage('See u next time~\n{}'.format(event.source.group_id))
