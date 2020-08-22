@@ -420,17 +420,7 @@ BNI : 0974711722 (Maria Nathania) DANA/OVO/TSEL : 082144219281""")
 1200 LIKE | 500rp
 2200 LIKE | 1.000rb
 4400 LIKE | 2.500rb''')
-		message2 = TextSendMessage(text='''🍓 STIKER/TEMA/EMOT 🍓
-5K 50© = Rp. 500
-10K 130© = Rp. 1000
-15K 160© = Rp. 1500
-20K 200© = Rp. 2000
-45K 420© = Rp. 3000
-55K. 500© = Rp. 4000
-60K 560© = Rp. 5000
-70K 630© = Rp. 6000
-80K 700© = Rp. 7000''')
-		sendMessageV2([message1,message2])
+		sendMessageV2([message1])
 
 	elif txt == "rekor" or text == "6":
 		sendMessage("{}".format(ugh["rekor"]))
